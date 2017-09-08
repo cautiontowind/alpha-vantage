@@ -1,0 +1,42 @@
+group 'alpha_vantage'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'maven-publish'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+dependencies {
+    compile "org.springframework:spring-context:$springVersion"
+    compile "org.springframework:spring-webmvc:$springVersion"
+    compile "org.springframework:spring-web:$springVersion"
+    compile "org.springframework:spring-test:$springVersion"
+    compile "com.fasterxml.jackson.core:jackson-databind:$jacksonMapperCoreVersion"
+    compile "com.fasterxml.jackson.core:jackson-core:$jacksonMapperCoreVersion"
+    compile "org.apache.httpcomponents:httpclient:$httpclientVersion"
+    compile "org.apache.httpcomponents:httpasyncclient:$httpAsyncClientVersion"
+    testCompile "junit:junit:$junitVersion"
+    compile ("org.slf4j:jcl-over-slf4j:$slf4jVersion"){exclude group: "org.slf4j", module: "slf4j-service"}
+    compile "org.slf4j:log4j-over-slf4j:$slf4jVersion"
+    compile("ch.qos.logback:logback-classic:$logbackClassicVersion"){
+        exclude group: "javax.mail", module: "mail"
+        exclude group: "javax.jms", module: "jms"
+        exclude group: "com.sun.jdmk", module: "jmxtools"
+        exclude group: "com.sun.jmx", module: "jmxri"
+        exclude group: "org.slf4j", module: "slf4j-service"
+    }
+}
