@@ -4,7 +4,9 @@ import com.alpha_vantage.api.domain.*;
 import com.alpha_vantage.api.enums.IndicatorType;
 import com.alpha_vantage.api.enums.SeriesType;
 import com.alpha_vantage.api.enums.TimeInterval;
+import com.alpha_vantage.api.exception.*;
 import com.alpha_vantage.api.service.TechnicalIndicatorOperation;
+import com.alpha_vantage.api.util.ExceptionUtil;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriUtils;
@@ -36,14 +38,25 @@ public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation{
 
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getSMA(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) {
-        String queryString = ALPHA_VANTAGE_API_URL+"function=SMA"+"&symbol="+symbol+"&interval="+interval.getName()+"&time_period="+timePeriod+"&series_type="+seriesType+"&apikey="+apiKey+"&";
+    public LinkedHashMap<LocalDate, AbstractIndicator> getSMA(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
+        String function = "SMA";
+        String queryString = ALPHA_VANTAGE_API_URL+"function="+function+"&symbol="+symbol+"&interval="+interval.getName()+"&time_period="+timePeriod+"&series_type="+seriesType+"&apikey="+apiKey+"&";
         LinkedHashMap<LocalDate, AbstractIndicator> result = new LinkedHashMap<>();
         JsonNode jsonNode = restTemplate.getForObject(queryString, JsonNode.class);
         Iterator<Map.Entry<String,JsonNode>> it = jsonNode.fields();
         while(it.hasNext()) {
             Map.Entry<String, JsonNode> mapEntry = it.next();
-            if(mapEntry.getKey().equals("Technical Analysis: SMA")){
+            if(mapEntry.getKey().equals("Error Message")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, function);
+            }
+
+            if(mapEntry.getKey().equals("Information")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, function);
+            }
+
+            if(mapEntry.getKey().equals("Technical Analysis: "+function)){
                 JsonNode node = mapEntry.getValue();
                 Iterator<Map.Entry<String,JsonNode>> timeSeriesIter = node.fields();
                 while(timeSeriesIter.hasNext()){
@@ -61,44 +74,45 @@ public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation{
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getEMA(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getEMA(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol, IndicatorType.SMA, interval, timePeriod, seriesType);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getWMA(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getWMA(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol, IndicatorType.EMA, interval, timePeriod, seriesType);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getDEMA(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getDEMA(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol, IndicatorType.DEMA, interval, timePeriod, seriesType);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getTEMA(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getTEMA(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol, IndicatorType.TEMA, interval, timePeriod, seriesType);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getTRIMA(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getTRIMA(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.TRIMA, interval, timePeriod, seriesType);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getKAMA(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getKAMA(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol, IndicatorType.KAMA, interval, timePeriod, seriesType);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, MamaIndicator> getMAMA(String symbol, TimeInterval interval, SeriesType seriesType, HashMap<String, String> options) {
-        String queryString = ALPHA_VANTAGE_API_URL+"function=MAMA&symbol="+symbol+"&interval="+interval.getName()+"&series_type="+seriesType+"&apikey="+apiKey+"&";
+    public LinkedHashMap<LocalDate, MamaIndicator> getMAMA(String symbol, TimeInterval interval, SeriesType seriesType, HashMap<String, String> options) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
+        String function ="MAMA";
+        String queryString = ALPHA_VANTAGE_API_URL+"function="+function+"&symbol="+symbol+"&interval="+interval.getName()+"&series_type="+seriesType+"&apikey="+apiKey+"&";
         String encodedUrl = options.keySet().stream().map(key -> {
             try {
                 return key + "=" + UriUtils.encode(options.get(key), "UTF-8");
@@ -114,7 +128,16 @@ public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation{
         Iterator<Map.Entry<String,JsonNode>> it = jsonNode.fields();
         while(it.hasNext()) {
             Map.Entry<String, JsonNode> mapEntry = it.next();
-            if(mapEntry.getKey().equals("Technical Analysis: MAMA")){
+            if(mapEntry.getKey().equals("Error Message")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, function);
+            }
+
+            if(mapEntry.getKey().equals("Information")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, function);
+            }
+            if(mapEntry.getKey().equals("Technical Analysis: "+function)){
                 JsonNode node = mapEntry.getValue();
                 Iterator<Map.Entry<String,JsonNode>> timeSeriesIter = node.fields();
                 while(timeSeriesIter.hasNext()){
@@ -134,14 +157,15 @@ public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation{
 
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getT3(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getT3(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol, IndicatorType.T3,  interval, timePeriod, seriesType);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, MacdIndicator> getMACD(String symbol, TimeInterval interval, SeriesType seriesType, HashMap<String, String> options) {
-        String queryString = ALPHA_VANTAGE_API_URL+"function=MACD&symbol="+symbol+"&interval="+interval.getName()+"&series_type="+seriesType+"&apikey="+apiKey+"&";
+    public LinkedHashMap<LocalDate, MacdIndicator> getMACD(String symbol, TimeInterval interval, SeriesType seriesType, HashMap<String, String> options) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
+        String function ="MACD";
+        String queryString = ALPHA_VANTAGE_API_URL+"function="+function+"&symbol="+symbol+"&interval="+interval.getName()+"&series_type="+seriesType+"&apikey="+apiKey+"&";
         String encodedUrl = options.keySet().stream().map(key -> {
             try {
                 return key + "=" + UriUtils.encode(options.get(key), "UTF-8");
@@ -157,7 +181,16 @@ public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation{
         Iterator<Map.Entry<String,JsonNode>> it = jsonNode.fields();
         while(it.hasNext()) {
             Map.Entry<String, JsonNode> mapEntry = it.next();
-            if(mapEntry.getKey().equals("Technical Analysis: MACD")){
+            if(mapEntry.getKey().equals("Error Message")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, function);
+            }
+
+            if(mapEntry.getKey().equals("Information")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, function);
+            }
+            if(mapEntry.getKey().equals("Technical Analysis: "+function)){
                 JsonNode node = mapEntry.getValue();
                 Iterator<Map.Entry<String,JsonNode>> timeSeriesIter = node.fields();
                 while(timeSeriesIter.hasNext()){
@@ -178,8 +211,9 @@ public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation{
 
 
     @Override
-    public LinkedHashMap<LocalDate, MacdIndicator> getMACDEXT(String symbol, TimeInterval interval, SeriesType seriesType, HashMap<String, String> options) {
-        String queryString = ALPHA_VANTAGE_API_URL+"function=MACDEXT&symbol="+symbol+"&interval="+interval.getName()+"&series_type="+seriesType+"&apikey="+apiKey+"&";
+    public LinkedHashMap<LocalDate, MacdIndicator> getMACDEXT(String symbol, TimeInterval interval, SeriesType seriesType, HashMap<String, String> options) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
+        String function = "MACDEXT";
+        String queryString = ALPHA_VANTAGE_API_URL+"function="+function+"&symbol="+symbol+"&interval="+interval.getName()+"&series_type="+seriesType+"&apikey="+apiKey+"&";
         String encodedUrl = options.keySet().stream().map(key -> {
             try {
                 return key + "=" + UriUtils.encode(options.get(key), "UTF-8");
@@ -195,7 +229,16 @@ public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation{
         Iterator<Map.Entry<String,JsonNode>> it = jsonNode.fields();
         while(it.hasNext()) {
             Map.Entry<String, JsonNode> mapEntry = it.next();
-            if(mapEntry.getKey().equals("Technical Analysis: MACDEXT")){
+            if(mapEntry.getKey().equals("Error Message")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, function);
+            }
+
+            if(mapEntry.getKey().equals("Information")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, function);
+            }
+            if(mapEntry.getKey().equals("Technical Analysis: "+function)){
                 JsonNode node = mapEntry.getValue();
                 Iterator<Map.Entry<String,JsonNode>> timeSeriesIter = node.fields();
                 while(timeSeriesIter.hasNext()){
@@ -214,8 +257,9 @@ public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation{
     }
 
     @Override
-    public LinkedHashMap<LocalDate, StochIndicator> getSTOCH(String symbol, TimeInterval interval, HashMap<String, String> options) {
-        String queryString = ALPHA_VANTAGE_API_URL+"function=STOCH&symbol="+symbol+"&interval="+interval.getName()+"&apikey="+apiKey+"&";
+    public LinkedHashMap<LocalDate, StochIndicator> getSTOCH(String symbol, TimeInterval interval, HashMap<String, String> options) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
+        String function = "STOCH";
+        String queryString = ALPHA_VANTAGE_API_URL+"function="+function+"&symbol="+symbol+"&interval="+interval.getName()+"&apikey="+apiKey+"&";
         String encodedUrl = options.keySet().stream().map(key -> {
             try {
                 return key + "=" + UriUtils.encode(options.get(key), "UTF-8");
@@ -231,7 +275,16 @@ public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation{
         Iterator<Map.Entry<String,JsonNode>> it = jsonNode.fields();
         while(it.hasNext()) {
             Map.Entry<String, JsonNode> mapEntry = it.next();
-            if(mapEntry.getKey().equals("Technical Analysis: STOCH")){
+            if(mapEntry.getKey().equals("Error Message")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, function);
+            }
+
+            if(mapEntry.getKey().equals("Information")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, function);
+            }
+            if(mapEntry.getKey().equals("Technical Analysis: "+function)){
                 JsonNode node = mapEntry.getValue();
                 Iterator<Map.Entry<String,JsonNode>> timeSeriesIter = node.fields();
                 while(timeSeriesIter.hasNext()){
@@ -249,8 +302,9 @@ public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation{
     }
 
     @Override
-    public LinkedHashMap<LocalDate, StochfIndicator> getSTOCHF(String symbol, TimeInterval interval, HashMap<String, String> options) {
-        String queryString = ALPHA_VANTAGE_API_URL+"function=STOCHF&symbol="+symbol+"&interval="+interval.getName()+"&apikey="+apiKey+"&";
+    public LinkedHashMap<LocalDate, StochfIndicator> getSTOCHF(String symbol, TimeInterval interval, HashMap<String, String> options) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
+        String function = "STOCHF";
+        String queryString = ALPHA_VANTAGE_API_URL+"function="+function+"&symbol="+symbol+"&interval="+interval.getName()+"&apikey="+apiKey+"&";
         String encodedUrl = options.keySet().stream().map(key -> {
             try {
                 return key + "=" + UriUtils.encode(options.get(key), "UTF-8");
@@ -266,7 +320,16 @@ public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation{
         Iterator<Map.Entry<String,JsonNode>> it = jsonNode.fields();
         while(it.hasNext()) {
             Map.Entry<String, JsonNode> mapEntry = it.next();
-            if(mapEntry.getKey().equals("Technical Analysis: STOCHF")){
+            if(mapEntry.getKey().equals("Error Message")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, function);
+            }
+
+            if(mapEntry.getKey().equals("Information")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, function);
+            }
+            if(mapEntry.getKey().equals("Technical Analysis: "+function)){
                 JsonNode node = mapEntry.getValue();
                 Iterator<Map.Entry<String,JsonNode>> timeSeriesIter = node.fields();
                 while(timeSeriesIter.hasNext()){
@@ -284,7 +347,7 @@ public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation{
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getRSI(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getRSI(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.RSI, interval, timePeriod, seriesType);
         return result;
     }
@@ -325,80 +388,90 @@ public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation{
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getWILLR(String symbol, TimeInterval interval, String timePeriod) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getWILLR(String symbol, TimeInterval interval, String timePeriod) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.WILLR, interval, timePeriod);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getADX(String symbol, TimeInterval interval, String timePeriod) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getADX(String symbol, TimeInterval interval, String timePeriod) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol, IndicatorType.ADX, interval, timePeriod);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getADXR(String symbol, TimeInterval interval, String timePeriod) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getADXR(String symbol, TimeInterval interval, String timePeriod) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol, IndicatorType.ADXR, interval, timePeriod);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getAPO(String symbol, TimeInterval interval, SeriesType seriesType, HashMap<String, String> options) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getAPO(String symbol, TimeInterval interval, SeriesType seriesType, HashMap<String, String> options) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol, IndicatorType.APO, interval, seriesType, options);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getPPO(String symbol, TimeInterval interval, SeriesType seriesType, HashMap<String, String> options) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getPPO(String symbol, TimeInterval interval, SeriesType seriesType, HashMap<String, String> options) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol, IndicatorType.PPO, interval, seriesType, options);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getMOM(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getMOM(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.MOM, interval, timePeriod, seriesType);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getBOP(String symbol, TimeInterval interval) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getBOP(String symbol, TimeInterval interval) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.BOP, interval);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getCCI(String symbol, TimeInterval interval, String timePeriod) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getCCI(String symbol, TimeInterval interval, String timePeriod) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.CCI, interval, timePeriod);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getCMO(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getCMO(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.CMO, interval, timePeriod, seriesType);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getROC(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getROC(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.ROC, interval, timePeriod, seriesType);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getROCR(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getROCR(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.ROCR, interval, timePeriod, seriesType);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AroonIndicator> getAROON(String symbol, TimeInterval interval, String timePeriod) {
-        String queryString = ALPHA_VANTAGE_API_URL+"function=AROON&symbol="+symbol+"&interval="+interval.getName()+"&time_period="+timePeriod+"&apikey="+apiKey+"&";
+    public LinkedHashMap<LocalDate, AroonIndicator> getAROON(String symbol, TimeInterval interval, String timePeriod) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
+        String function = "AROON";
+        String queryString = ALPHA_VANTAGE_API_URL+"function="+function+"&symbol="+symbol+"&interval="+interval.getName()+"&time_period="+timePeriod+"&apikey="+apiKey+"&";
         LinkedHashMap<LocalDate, AroonIndicator> result = new LinkedHashMap<>();
         JsonNode jsonNode = restTemplate.getForObject(queryString, JsonNode.class);
         Iterator<Map.Entry<String,JsonNode>> it = jsonNode.fields();
         while(it.hasNext()) {
             Map.Entry<String, JsonNode> mapEntry = it.next();
-            if(mapEntry.getKey().equals("Technical Analysis: AROON")){
+            if(mapEntry.getKey().equals("Error Message")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, function);
+            }
+
+            if(mapEntry.getKey().equals("Information")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, function);
+            }
+            if(mapEntry.getKey().equals("Technical Analysis: "+function)){
                 JsonNode node = mapEntry.getValue();
                 Iterator<Map.Entry<String,JsonNode>> timeSeriesIter = node.fields();
                 while(timeSeriesIter.hasNext()){
@@ -416,62 +489,64 @@ public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation{
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getAROONOSC(String symbol, TimeInterval interval, String timePeriod) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getAROONOSC(String symbol, TimeInterval interval, String timePeriod) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.AROONOSC, interval, timePeriod);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getMFI(String symbol, TimeInterval interval, String timePeriod) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getMFI(String symbol, TimeInterval interval, String timePeriod) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.MFI, interval, timePeriod);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getTRIX(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getTRIX(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.TRIX, interval, timePeriod, seriesType);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getULTOSC(String symbol, TimeInterval interval, String timePeriod, HashMap<String, String> options) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getULTOSC(String symbol, TimeInterval interval, String timePeriod, HashMap<String, String> options) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.ULTOSC, interval, timePeriod, options);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getDX(String symbol, TimeInterval interval, String timePeriod) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getDX(String symbol, TimeInterval interval, String timePeriod) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.ULTOSC, interval, timePeriod);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getMINUS_DI(String symbol, TimeInterval interval, String timePeriod) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getMINUS_DI(String symbol, TimeInterval interval, String timePeriod) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.MINUS_DI, interval, timePeriod);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getPLUS_DI(String symbol, TimeInterval interval, String timePeriod) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getPLUS_DI(String symbol, TimeInterval interval, String timePeriod) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.PLUS_DI, interval, timePeriod);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getMINUS_DM(String symbol, TimeInterval interval, String timePeriod) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getMINUS_DM(String symbol, TimeInterval interval, String timePeriod) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.MINUS_DM, interval, timePeriod);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getPLUS_DM(String symbol, TimeInterval interval, String timePeriod) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getPLUS_DM(String symbol, TimeInterval interval, String timePeriod) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.PLUS_DM, interval, timePeriod);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, BbandsIndicator> getBBANDS(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType, HashMap<String, String> options) {
-        String queryString = ALPHA_VANTAGE_API_URL+"function=BBANDS&symbol="+symbol+"&interval="+interval.getName()+"&time_period="+timePeriod+"&series_type="+seriesType+"&apikey="+apiKey+"&";
+    public LinkedHashMap<LocalDate, BbandsIndicator> getBBANDS(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType, HashMap<String, String> options) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
+        String function = "BBANDS";
+
+        String queryString = ALPHA_VANTAGE_API_URL+"function="+function+"symbol="+symbol+"&interval="+interval.getName()+"&time_period="+timePeriod+"&series_type="+seriesType+"&apikey="+apiKey+"&";
         String encodedUrl = options.keySet().stream().map(key -> {
             try {
                 return key + "=" + UriUtils.encode(options.get(key), "UTF-8");
@@ -486,7 +561,16 @@ public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation{
         Iterator<Map.Entry<String,JsonNode>> it = jsonNode.fields();
         while(it.hasNext()) {
             Map.Entry<String, JsonNode> mapEntry = it.next();
-            if(mapEntry.getKey().equals("Technical Analysis: BBANDS")){
+            if(mapEntry.getKey().equals("Error Message")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, function);
+            }
+
+            if(mapEntry.getKey().equals("Information")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, function);
+            }
+            if(mapEntry.getKey().equals("Technical Analysis: "+function)){
                 JsonNode node = mapEntry.getValue();
                 Iterator<Map.Entry<String,JsonNode>> timeSeriesIter = node.fields();
                 while(timeSeriesIter.hasNext()){
@@ -506,49 +590,60 @@ public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation{
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getMIDPOINT(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getMIDPOINT(String symbol, TimeInterval interval, String timePeriod, SeriesType seriesType) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.MIDPOINT, interval, timePeriod, seriesType);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getMIDPRICE(String symbol, TimeInterval interval, String timePeriod) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getMIDPRICE(String symbol, TimeInterval interval, String timePeriod) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.MIDPRICE, interval, timePeriod);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getSAR(String symbol, TimeInterval interval, HashMap<String, String> options) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getSAR(String symbol, TimeInterval interval, HashMap<String, String> options) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.SAR, interval, options);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getTRANGE(String symbol, TimeInterval interval) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getTRANGE(String symbol, TimeInterval interval) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.TRANGE, interval);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getATR(String symbol, TimeInterval interval, String timePeriod) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getATR(String symbol, TimeInterval interval, String timePeriod) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.ATR, interval,timePeriod);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getNATR(String symbol, TimeInterval interval, String timePeriod) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getNATR(String symbol, TimeInterval interval, String timePeriod) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.NATR, interval,timePeriod);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getAD(String symbol, TimeInterval interval) {
-        String queryString = ALPHA_VANTAGE_API_URL+"function=AD&symbol="+symbol+"&interval="+interval.getName()+"&apikey="+apiKey+"&";
+    public LinkedHashMap<LocalDate, AbstractIndicator> getAD(String symbol, TimeInterval interval) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
+        String function = "AD";
+        String queryString = ALPHA_VANTAGE_API_URL+"function="+function+"&symbol="+symbol+"&interval="+interval.getName()+"&apikey="+apiKey+"&";
         LinkedHashMap<LocalDate, AbstractIndicator> result = new LinkedHashMap<>();
         JsonNode jsonNode = restTemplate.getForObject(queryString, JsonNode.class);
         Iterator<Map.Entry<String,JsonNode>> it = jsonNode.fields();
         while(it.hasNext()) {
             Map.Entry<String, JsonNode> mapEntry = it.next();
+            if(mapEntry.getKey().equals("Error Message")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, function);
+            }
+
+            if(mapEntry.getKey().equals("Information")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, function);
+            }
+
             if(mapEntry.getKey().equals("Technical Analysis: Chaikin A/D")){
                 JsonNode node = mapEntry.getValue();
                 Iterator<Map.Entry<String,JsonNode>> timeSeriesIter = node.fields();
@@ -567,32 +662,42 @@ public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation{
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getADOSC(String symbol, TimeInterval interval, HashMap<String, String> options) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getADOSC(String symbol, TimeInterval interval, HashMap<String, String> options) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.ADOSC, interval,options);
         return result;
     }
 //==
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getOBV(String symbol, TimeInterval interval) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getOBV(String symbol, TimeInterval interval) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.OBV, interval);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getHT_TRENDLINE(String symbol, TimeInterval interval, SeriesType seriesType) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getHT_TRENDLINE(String symbol, TimeInterval interval, SeriesType seriesType) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.HT_TRENDLINE, interval, seriesType);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, HtSineIndicator> getHT_SINE(String symbol, TimeInterval interval, SeriesType seriesType) {
-        String queryString = ALPHA_VANTAGE_API_URL+"function=HT_SINE&symbol="+symbol+"&interval="+interval.getName()+"&series_type="+seriesType+"&apikey="+apiKey+"&";
+    public LinkedHashMap<LocalDate, HtSineIndicator> getHT_SINE(String symbol, TimeInterval interval, SeriesType seriesType) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
+        String function = "HT_SINE";
+        String queryString = ALPHA_VANTAGE_API_URL+"function="+function+"&symbol="+symbol+"&interval="+interval.getName()+"&series_type="+seriesType+"&apikey="+apiKey+"&";
         LinkedHashMap<LocalDate, HtSineIndicator> result = new LinkedHashMap<>();
         JsonNode jsonNode = restTemplate.getForObject(queryString, JsonNode.class);
         Iterator<Map.Entry<String,JsonNode>> it = jsonNode.fields();
         while(it.hasNext()) {
             Map.Entry<String, JsonNode> mapEntry = it.next();
-            if(mapEntry.getKey().equals("Technical Analysis: HT_SINE")){
+            if(mapEntry.getKey().equals("Error Message")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, function);
+            }
+
+            if(mapEntry.getKey().equals("Information")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, function);
+            }
+            if(mapEntry.getKey().equals("Technical Analysis: "+function)){
                 JsonNode node = mapEntry.getValue();
                 Iterator<Map.Entry<String,JsonNode>> timeSeriesIter = node.fields();
                 while(timeSeriesIter.hasNext()){
@@ -611,32 +716,42 @@ public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation{
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getHT_TRENDMODE(String symbol, TimeInterval interval, SeriesType seriesType) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getHT_TRENDMODE(String symbol, TimeInterval interval, SeriesType seriesType) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.HT_TRENDMODE, interval, seriesType);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getHT_DCPERIOD(String symbol, TimeInterval interval, SeriesType seriesType) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getHT_DCPERIOD(String symbol, TimeInterval interval, SeriesType seriesType) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.HT_DCPERIOD, interval, seriesType);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, AbstractIndicator> getHT_DCPHASE(String symbol, TimeInterval interval, SeriesType seriesType) {
+    public LinkedHashMap<LocalDate, AbstractIndicator> getHT_DCPHASE(String symbol, TimeInterval interval, SeriesType seriesType) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         LinkedHashMap<LocalDate, AbstractIndicator> result = requestApiData(symbol,IndicatorType.HT_DCPHASE, interval, seriesType);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, HtPhasorIndicator> getHT_PHASOR(String symbol, TimeInterval interval, SeriesType seriesType) {
-        String queryString = ALPHA_VANTAGE_API_URL+"function=HT_PHASOR&symbol="+symbol+"&interval="+interval.getName()+"&series_type="+seriesType+"&apikey="+apiKey+"&";
+    public LinkedHashMap<LocalDate, HtPhasorIndicator> getHT_PHASOR(String symbol, TimeInterval interval, SeriesType seriesType) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
+        String function = "HT_PHASOR";
+        String queryString = ALPHA_VANTAGE_API_URL+"function="+function+"&symbol="+symbol+"&interval="+interval.getName()+"&series_type="+seriesType+"&apikey="+apiKey+"&";
         LinkedHashMap<LocalDate, HtPhasorIndicator> result = new LinkedHashMap<>();
         JsonNode jsonNode = restTemplate.getForObject(queryString, JsonNode.class);
         Iterator<Map.Entry<String,JsonNode>> it = jsonNode.fields();
         while(it.hasNext()) {
             Map.Entry<String, JsonNode> mapEntry = it.next();
-            if(mapEntry.getKey().equals("Technical Analysis: HT_PHASOR")){
+            if(mapEntry.getKey().equals("Error Message")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, function);
+            }
+
+            if(mapEntry.getKey().equals("Information")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, function);
+            }
+            if(mapEntry.getKey().equals("Technical Analysis: "+function)){
                 JsonNode node = mapEntry.getValue();
                 Iterator<Map.Entry<String,JsonNode>> timeSeriesIter = node.fields();
                 while(timeSeriesIter.hasNext()){
@@ -655,13 +770,23 @@ public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation{
     }
 
 
-    private LinkedHashMap<LocalDate, AbstractIndicator> requestApiData(String symbol, IndicatorType indicatorType,TimeInterval interval, SeriesType seriesType){
+    private LinkedHashMap<LocalDate, AbstractIndicator> requestApiData(String symbol, IndicatorType indicatorType,TimeInterval interval, SeriesType seriesType) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         String queryString = ALPHA_VANTAGE_API_URL+"function="+indicatorType.name()+"&symbol="+symbol+"&interval="+interval.getName()+"&series_type="+seriesType+"&apikey="+apiKey+"&";
         LinkedHashMap<LocalDate, AbstractIndicator> result = new LinkedHashMap<>();
         JsonNode jsonNode = restTemplate.getForObject(queryString, JsonNode.class);
         Iterator<Map.Entry<String,JsonNode>> it = jsonNode.fields();
         while(it.hasNext()) {
             Map.Entry<String, JsonNode> mapEntry = it.next();
+            if(mapEntry.getKey().equals("Error Message")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, indicatorType.name());
+            }
+
+            if(mapEntry.getKey().equals("Information")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, indicatorType.name());
+            }
+
             if(mapEntry.getKey().equals("Technical Analysis: "+indicatorType.name())){
                 JsonNode node = mapEntry.getValue();
                 Iterator<Map.Entry<String,JsonNode>> timeSeriesIter = node.fields();
@@ -682,13 +807,22 @@ public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation{
 
 
 
-    private LinkedHashMap<LocalDate, AbstractIndicator> requestApiData(String symbol, IndicatorType indicatorType,TimeInterval interval, String timePeriod){
+    private LinkedHashMap<LocalDate, AbstractIndicator> requestApiData(String symbol, IndicatorType indicatorType,TimeInterval interval, String timePeriod) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         String queryString = ALPHA_VANTAGE_API_URL+"function="+indicatorType.name()+"&symbol="+symbol+"&interval="+interval.getName()+"&time_period="+timePeriod+"&apikey="+apiKey+"&";
         LinkedHashMap<LocalDate, AbstractIndicator> result = new LinkedHashMap<>();
         JsonNode jsonNode = restTemplate.getForObject(queryString, JsonNode.class);
         Iterator<Map.Entry<String,JsonNode>> it = jsonNode.fields();
         while(it.hasNext()) {
             Map.Entry<String, JsonNode> mapEntry = it.next();
+            if(mapEntry.getKey().equals("Error Message")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, indicatorType.name());
+            }
+
+            if(mapEntry.getKey().equals("Information")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, indicatorType.name());
+            }
             if(mapEntry.getKey().equals("Technical Analysis: "+indicatorType.name())){
                 JsonNode node = mapEntry.getValue();
                 Iterator<Map.Entry<String,JsonNode>> timeSeriesIter = node.fields();
@@ -708,13 +842,23 @@ public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation{
 
 
 
-    private LinkedHashMap<LocalDate, AbstractIndicator> requestApiData(String symbol, IndicatorType indicatorType, TimeInterval interval, String timePeriod, SeriesType seriesType){
+    private LinkedHashMap<LocalDate, AbstractIndicator> requestApiData(String symbol, IndicatorType indicatorType, TimeInterval interval, String timePeriod, SeriesType seriesType) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         String queryString = ALPHA_VANTAGE_API_URL+"function="+indicatorType.name()+"&symbol="+symbol+"&interval="+interval.getName()+"&time_period="+timePeriod+"&series_type="+seriesType+"&apikey="+apiKey+"&";
         LinkedHashMap<LocalDate, AbstractIndicator> result = new LinkedHashMap<>();
         JsonNode jsonNode = restTemplate.getForObject(queryString, JsonNode.class);
         Iterator<Map.Entry<String,JsonNode>> it = jsonNode.fields();
         while(it.hasNext()) {
             Map.Entry<String, JsonNode> mapEntry = it.next();
+            if(mapEntry.getKey().equals("Error Message")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, indicatorType.name());
+            }
+
+            if(mapEntry.getKey().equals("Information")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, indicatorType.name());
+            }
+
             if(mapEntry.getKey().equals("Technical Analysis: "+indicatorType.name())){
                 JsonNode node = mapEntry.getValue();
                 Iterator<Map.Entry<String,JsonNode>> timeSeriesIter = node.fields();
@@ -733,7 +877,7 @@ public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation{
     }
 
 
-    private LinkedHashMap<LocalDate, AbstractIndicator> requestApiData(String symbol, IndicatorType indicatorType, TimeInterval interval, SeriesType seriesType, HashMap<String, String> options){
+    private LinkedHashMap<LocalDate, AbstractIndicator> requestApiData(String symbol, IndicatorType indicatorType, TimeInterval interval, SeriesType seriesType, HashMap<String, String> options) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         String queryString = ALPHA_VANTAGE_API_URL+"function="+indicatorType.name()+"&symbol="+symbol+"&interval="+interval.getName()+"&series_type="+seriesType+"&apikey="+apiKey+"&";
         String encodedUrl = options.keySet().stream().map(key -> {
             try {
@@ -750,6 +894,15 @@ public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation{
         Iterator<Map.Entry<String,JsonNode>> it = jsonNode.fields();
         while(it.hasNext()) {
             Map.Entry<String, JsonNode> mapEntry = it.next();
+            if(mapEntry.getKey().equals("Error Message")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, indicatorType.name());
+            }
+
+            if(mapEntry.getKey().equals("Information")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, indicatorType.name());
+            }
             if(mapEntry.getKey().equals("Technical Analysis: "+indicatorType.name())){
                 JsonNode node = mapEntry.getValue();
                 Iterator<Map.Entry<String,JsonNode>> timeSeriesIter = node.fields();
@@ -768,13 +921,22 @@ public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation{
     }
 
 
-    private LinkedHashMap<LocalDate, AbstractIndicator> requestApiData(String symbol, IndicatorType indicatorType, TimeInterval interval){
+    private LinkedHashMap<LocalDate, AbstractIndicator> requestApiData(String symbol, IndicatorType indicatorType, TimeInterval interval) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         String queryString = ALPHA_VANTAGE_API_URL+"function="+indicatorType.name()+"&symbol="+symbol+"&interval="+interval.getName()+"&apikey="+apiKey+"&";
         LinkedHashMap<LocalDate, AbstractIndicator> result = new LinkedHashMap<>();
         JsonNode jsonNode = restTemplate.getForObject(queryString, JsonNode.class);
         Iterator<Map.Entry<String,JsonNode>> it = jsonNode.fields();
         while(it.hasNext()) {
             Map.Entry<String, JsonNode> mapEntry = it.next();
+            if(mapEntry.getKey().equals("Error Message")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, indicatorType.name());
+            }
+
+            if(mapEntry.getKey().equals("Information")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, indicatorType.name());
+            }
             if(mapEntry.getKey().equals("Technical Analysis: "+indicatorType.name())){
                 JsonNode node = mapEntry.getValue();
                 Iterator<Map.Entry<String,JsonNode>> timeSeriesIter = node.fields();
@@ -793,7 +955,7 @@ public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation{
     }
 
 
-    private LinkedHashMap<LocalDate, AbstractIndicator> requestApiData(String symbol, IndicatorType indicatorType, TimeInterval interval, String timePeriod, HashMap<String, String> options){
+    private LinkedHashMap<LocalDate, AbstractIndicator> requestApiData(String symbol, IndicatorType indicatorType, TimeInterval interval, String timePeriod, HashMap<String, String> options) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         String queryString = ALPHA_VANTAGE_API_URL+"function="+indicatorType.name()+"&symbol="+symbol+"&interval="+interval.getName()+"&time_period="+timePeriod+"&apikey="+apiKey+"&";
         String encodedUrl = options.keySet().stream().map(key -> {
             try {
@@ -810,6 +972,15 @@ public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation{
         Iterator<Map.Entry<String,JsonNode>> it = jsonNode.fields();
         while(it.hasNext()) {
             Map.Entry<String, JsonNode> mapEntry = it.next();
+            if(mapEntry.getKey().equals("Error Message")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, indicatorType.name());
+            }
+
+            if(mapEntry.getKey().equals("Information")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, indicatorType.name());
+            }
             if(mapEntry.getKey().equals("Technical Analysis: "+indicatorType.name())){
                 JsonNode node = mapEntry.getValue();
                 Iterator<Map.Entry<String,JsonNode>> timeSeriesIter = node.fields();
@@ -828,7 +999,7 @@ public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation{
     }
 
 
-    private LinkedHashMap<LocalDate, AbstractIndicator> requestApiData(String symbol, IndicatorType indicatorType, TimeInterval interval, HashMap<String, String> options){
+    private LinkedHashMap<LocalDate, AbstractIndicator> requestApiData(String symbol, IndicatorType indicatorType, TimeInterval interval, HashMap<String, String> options) throws MissingApiKeyException, InvalidFunctionOptionException, InvalidApiKeyException, MalFormattedFunctionException, UltraHighFrequencyRequestException {
         String queryString = ALPHA_VANTAGE_API_URL+"function="+indicatorType.name()+"&symbol="+symbol+"&interval="+interval.getName()+"&apikey="+apiKey+"&";
 
         String encodedUrl = options.keySet().stream().map(key -> {
@@ -845,6 +1016,15 @@ public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation{
         Iterator<Map.Entry<String,JsonNode>> it = jsonNode.fields();
         while(it.hasNext()) {
             Map.Entry<String, JsonNode> mapEntry = it.next();
+            if(mapEntry.getKey().equals("Error Message")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, indicatorType.name());
+            }
+
+            if(mapEntry.getKey().equals("Information")){
+                String value = mapEntry.getValue().toString();
+                ExceptionUtil.handleExceptions(value, indicatorType.name());
+            }
             if(mapEntry.getKey().equals("Technical Analysis: "+indicatorType.name())){
                 JsonNode node = mapEntry.getValue();
                 Iterator<Map.Entry<String,JsonNode>> timeSeriesIter = node.fields();
