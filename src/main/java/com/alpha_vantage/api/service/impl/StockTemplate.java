@@ -54,16 +54,7 @@ public class StockTemplate implements StockOperation {
         Iterator<Map.Entry<String,JsonNode>> it = jsonNode.fields();
         while(it.hasNext()) {
             Map.Entry<String, JsonNode> mapEntry = it.next();
-            if(mapEntry.getKey().equals("Error Message")){
-                String value = mapEntry.getValue().toString();
-                ExceptionUtil.handleExceptions(value, function);
-            }
-
-            if(mapEntry.getKey().equals("Information")){
-                String value = mapEntry.getValue().toString();
-                ExceptionUtil.handleExceptions(value, function);
-            }
-
+            ExceptionUtil.handleException(mapEntry, function);
             String interval = "("+options.get("interval")+")";
             if(mapEntry.getKey().equals("Time Series "+interval)){
                 JsonNode node = mapEntry.getValue();
@@ -72,11 +63,11 @@ public class StockTemplate implements StockOperation {
                     Map.Entry<String, JsonNode> timeSeriesMap = timeSeriesIter.next();
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                     LocalDateTime dateTime = LocalDateTime.parse(timeSeriesMap.getKey(), formatter);
-                    String open = String.valueOf(timeSeriesMap.getValue().get("1. open"));
-                    String high = String.valueOf(timeSeriesMap.getValue().get("2. high"));
-                    String low = String.valueOf(timeSeriesMap.getValue().get("3. low"));
-                    String close = String.valueOf(timeSeriesMap.getValue().get("4. close"));
-                    String volume = String.valueOf(timeSeriesMap.getValue().get("5. volume"));
+                    String open = String.valueOf(timeSeriesMap.getValue().get("1. open")).replaceAll("\"","");
+                    String high = String.valueOf(timeSeriesMap.getValue().get("2. high")).replaceAll("\"","");
+                    String low = String.valueOf(timeSeriesMap.getValue().get("3. low")).replaceAll("\"","");
+                    String close = String.valueOf(timeSeriesMap.getValue().get("4. close")).replaceAll("\"","");
+                    String volume = String.valueOf(timeSeriesMap.getValue().get("5. volume")).replaceAll("\"","");
                     result.put(dateTime, Stock.newStpckInstance(symbol,  open, high, low, close,volume));
                 }
 
@@ -106,26 +97,18 @@ public class StockTemplate implements StockOperation {
         Iterator<Map.Entry<String,JsonNode>> it = jsonNode.fields();
         while(it.hasNext()) {
             Map.Entry<String, JsonNode> mapEntry = it.next();
-            if(mapEntry.getKey().equals("Error Message")){
-                String value = mapEntry.getValue().toString();
-                ExceptionUtil.handleExceptions(value, function);
-            }
-
-            if(mapEntry.getKey().equals("Information")){
-                String value = mapEntry.getValue().toString();
-                ExceptionUtil.handleExceptions(value, function);
-            }
+            ExceptionUtil.handleException(mapEntry, function);
             if(mapEntry.getKey().equals("Time Series (Daily)")){
                 JsonNode node = mapEntry.getValue();
                 Iterator<Map.Entry<String,JsonNode>> timeSeriesIter = node.fields();
                 while(timeSeriesIter.hasNext()){
                     Map.Entry<String, JsonNode> timeSeriesMap = timeSeriesIter.next();
                     LocalDate localDate = LocalDate.parse(timeSeriesMap.getKey(), DateTimeFormatter.ISO_LOCAL_DATE);
-                    String open = String.valueOf(timeSeriesMap.getValue().get("1. open"));
-                    String high = String.valueOf(timeSeriesMap.getValue().get("2. high"));
-                    String low = String.valueOf(timeSeriesMap.getValue().get("3. low"));
-                    String close = String.valueOf(timeSeriesMap.getValue().get("4. close"));
-                    String volume = String.valueOf(timeSeriesMap.getValue().get("5. volume"));
+                    String open = String.valueOf(timeSeriesMap.getValue().get("1. open")).replaceAll("\"","");
+                    String high = String.valueOf(timeSeriesMap.getValue().get("2. high")).replaceAll("\"","");
+                    String low = String.valueOf(timeSeriesMap.getValue().get("3. low")).replaceAll("\"","");
+                    String close = String.valueOf(timeSeriesMap.getValue().get("4. close")).replaceAll("\"","");
+                    String volume = String.valueOf(timeSeriesMap.getValue().get("5. volume")).replaceAll("\"","");
                     result.put(localDate, Stock.newStpckInstance(symbol, open, high, low, close,volume));
                 }
 
@@ -152,29 +135,21 @@ public class StockTemplate implements StockOperation {
         Iterator<Map.Entry<String,JsonNode>> it = jsonNode.fields();
         while(it.hasNext()) {
             Map.Entry<String, JsonNode> mapEntry = it.next();
-            if(mapEntry.getKey().equals("Error Message")){
-                String value = mapEntry.getValue().toString();
-                ExceptionUtil.handleExceptions(value, function);
-            }
-
-            if(mapEntry.getKey().equals("Information")){
-                String value = mapEntry.getValue().toString();
-                ExceptionUtil.handleExceptions(value, function);
-            }
+            ExceptionUtil.handleException(mapEntry, function);
             if(mapEntry.getKey().equals("Time Series (Daily)")){
                 JsonNode node = mapEntry.getValue();
                 Iterator<Map.Entry<String,JsonNode>> timeSeriesIter = node.fields();
                 while(timeSeriesIter.hasNext()){
                     Map.Entry<String, JsonNode> timeSeriesMap = timeSeriesIter.next();
                     LocalDate localDate = LocalDate.parse(timeSeriesMap.getKey(), DateTimeFormatter.ISO_LOCAL_DATE);
-                    String open = String.valueOf(timeSeriesMap.getValue().get("1. open"));
-                    String high = String.valueOf(timeSeriesMap.getValue().get("2. high"));
-                    String low = String.valueOf(timeSeriesMap.getValue().get("3. low"));
-                    String close = String.valueOf(timeSeriesMap.getValue().get("4. close"));
-                    String adjustedClose = String.valueOf(timeSeriesMap.getValue().get("5. adjusted close"));
-                    String volume = String.valueOf(timeSeriesMap.getValue().get("6. volume"));
-                    String dividendAmount = String.valueOf(timeSeriesMap.getValue().get("7. dividend amount"));
-                    String splitCoefficient = String.valueOf(timeSeriesMap.getValue().get("8. split coefficient"));
+                    String open = String.valueOf(timeSeriesMap.getValue().get("1. open")).replaceAll("\"","");
+                    String high = String.valueOf(timeSeriesMap.getValue().get("2. high")).replaceAll("\"","");
+                    String low = String.valueOf(timeSeriesMap.getValue().get("3. low")).replaceAll("\"","");
+                    String close = String.valueOf(timeSeriesMap.getValue().get("4. close")).replaceAll("\"","");
+                    String adjustedClose = String.valueOf(timeSeriesMap.getValue().get("5. adjusted close")).replaceAll("\"","");
+                    String volume = String.valueOf(timeSeriesMap.getValue().get("6. volume")).replaceAll("\"","");
+                    String dividendAmount = String.valueOf(timeSeriesMap.getValue().get("7. dividend amount")).replaceAll("\"","");
+                    String splitCoefficient = String.valueOf(timeSeriesMap.getValue().get("8. split coefficient")).replaceAll("\"","");
 
                     result.put(localDate, Stock.newStpckInstance("",symbol, open, high,low, close,volume,adjustedClose,dividendAmount,splitCoefficient));
                 }
@@ -202,26 +177,18 @@ public class StockTemplate implements StockOperation {
         Iterator<Map.Entry<String,JsonNode>> it = jsonNode.fields();
         while(it.hasNext()) {
             Map.Entry<String, JsonNode> mapEntry = it.next();
-            if(mapEntry.getKey().equals("Error Message")){
-                String value = mapEntry.getValue().toString();
-                ExceptionUtil.handleExceptions(value, function);
-            }
-
-            if(mapEntry.getKey().equals("Information")){
-                String value = mapEntry.getValue().toString();
-                ExceptionUtil.handleExceptions(value, function);
-            }
+            ExceptionUtil.handleException(mapEntry, function);
             if(mapEntry.getKey().equals("Weekly Time Series")){
                 JsonNode node = mapEntry.getValue();
                 Iterator<Map.Entry<String,JsonNode>> timeSeriesIter = node.fields();
                 while(timeSeriesIter.hasNext()){
                     Map.Entry<String, JsonNode> timeSeriesMap = timeSeriesIter.next();
                     LocalDate localDate = LocalDate.parse(timeSeriesMap.getKey(), DateTimeFormatter.ISO_LOCAL_DATE);
-                    String open = String.valueOf(timeSeriesMap.getValue().get("1. open"));
-                    String high = String.valueOf(timeSeriesMap.getValue().get("2. high"));
-                    String low = String.valueOf(timeSeriesMap.getValue().get("3. low"));
-                    String close = String.valueOf(timeSeriesMap.getValue().get("4. close"));
-                    String volume = String.valueOf(timeSeriesMap.getValue().get("5. volume"));
+                    String open = String.valueOf(timeSeriesMap.getValue().get("1. open")).replaceAll("\"","");
+                    String high = String.valueOf(timeSeriesMap.getValue().get("2. high")).replaceAll("\"","");
+                    String low = String.valueOf(timeSeriesMap.getValue().get("3. low")).replaceAll("\"","");
+                    String close = String.valueOf(timeSeriesMap.getValue().get("4. close")).replaceAll("\"","");
+                    String volume = String.valueOf(timeSeriesMap.getValue().get("5. volume")).replaceAll("\"","");
                     result.put(localDate, Stock.newStpckInstance(symbol, open, high, low, close,volume));
                 }
 
@@ -248,26 +215,18 @@ public class StockTemplate implements StockOperation {
         Iterator<Map.Entry<String,JsonNode>> it = jsonNode.fields();
         while(it.hasNext()) {
             Map.Entry<String, JsonNode> mapEntry = it.next();
-            if(mapEntry.getKey().equals("Error Message")){
-                String value = mapEntry.getValue().toString();
-                ExceptionUtil.handleExceptions(value, function);
-            }
-
-            if(mapEntry.getKey().equals("Information")){
-                String value = mapEntry.getValue().toString();
-                ExceptionUtil.handleExceptions(value, function);
-            }
+            ExceptionUtil.handleException(mapEntry, function);
             if(mapEntry.getKey().equals("Monthly Time Series")){
                 JsonNode node = mapEntry.getValue();
                 Iterator<Map.Entry<String,JsonNode>> timeSeriesIter = node.fields();
                 while(timeSeriesIter.hasNext()){
                     Map.Entry<String, JsonNode> timeSeriesMap = timeSeriesIter.next();
                     LocalDate localDate = LocalDate.parse(timeSeriesMap.getKey(), DateTimeFormatter.ISO_LOCAL_DATE);
-                    String open = String.valueOf(timeSeriesMap.getValue().get("1. open"));
-                    String high = String.valueOf(timeSeriesMap.getValue().get("2. high"));
-                    String low = String.valueOf(timeSeriesMap.getValue().get("3. low"));
-                    String close = String.valueOf(timeSeriesMap.getValue().get("4. close"));
-                    String volume = String.valueOf(timeSeriesMap.getValue().get("5. volume"));
+                    String open = String.valueOf(timeSeriesMap.getValue().get("1. open")).replaceAll("\"","");
+                    String high = String.valueOf(timeSeriesMap.getValue().get("2. high")).replaceAll("\"","");
+                    String low = String.valueOf(timeSeriesMap.getValue().get("3. low")).replaceAll("\"","");
+                    String close = String.valueOf(timeSeriesMap.getValue().get("4. close")).replaceAll("\"","");
+                    String volume = String.valueOf(timeSeriesMap.getValue().get("5. volume")).replaceAll("\"","");
                     result.put(localDate, Stock.newStpckInstance(symbol, open, high, low, close,volume));
                 }
 

@@ -1,7 +1,9 @@
 package com.alpha_vantage.api.config;
 
+import com.alpha_vantage.api.service.CryptoCurrencyOperation;
 import com.alpha_vantage.api.service.StockOperation;
 import com.alpha_vantage.api.service.TechnicalIndicatorOperation;
+import com.alpha_vantage.api.service.impl.CryptoCurrencyTemplate;
 import com.alpha_vantage.api.service.impl.StockTemplate;
 import com.alpha_vantage.api.service.impl.TechnicalIndicatorTemplate;
 import org.springframework.context.annotation.Bean;
@@ -19,6 +21,11 @@ public class AppConfig {
     @Bean
     StockOperation stockOperation(){
         return new StockTemplate(restTemplate(),apiKey);
+    }
+
+    @Bean
+    CryptoCurrencyOperation cryptoCurrencyOperation(){
+        return new CryptoCurrencyTemplate(restTemplate(), apiKey);
     }
 
     @Bean

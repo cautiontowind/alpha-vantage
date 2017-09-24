@@ -1,6 +1,10 @@
 package com.alpha_vantage.api.util;
 
 import com.alpha_vantage.api.exception.*;
+import com.fasterxml.jackson.databind.JsonNode;
+
+import java.io.UnsupportedEncodingException;
+import java.util.Map;
 
 public class ExceptionUtil {
 
@@ -22,5 +26,17 @@ public class ExceptionUtil {
             throw new UltraHighFrequencyRequestException();
         }
 
+    }
+
+    public static void handleException(Map.Entry<String, JsonNode> mapEntry, String function) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException{
+        if(mapEntry.getKey().equals("Error Message")){
+            String value = mapEntry.getValue().toString();
+            ExceptionUtil.handleExceptions(value, function);
+        }
+
+        if(mapEntry.getKey().equals("Information")){
+            String value = mapEntry.getValue().toString();
+            ExceptionUtil.handleExceptions(value, function);
+        }
     }
 }

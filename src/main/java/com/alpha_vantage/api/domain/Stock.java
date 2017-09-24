@@ -1,6 +1,8 @@
 package com.alpha_vantage.api.domain;
 
-public class Stock {
+import java.io.Serializable;
+
+public class Stock implements Serializable{
     private String symbol;
     private String open;
     private String high;

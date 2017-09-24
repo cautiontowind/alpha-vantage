@@ -6,11 +6,16 @@ import com.alpha_vantage.api.service.StockOperation;
 import com.alpha_vantage.api.test.AbstractServiceTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.client.HttpServerErrorException;
 
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static junit.framework.TestCase.assertEquals;
@@ -23,15 +28,15 @@ public class StockTemplateTest extends AbstractServiceTest {
 
 
     @Test
-    public void testIntraDay(){
+    public void testIntraDay() {
         try {
             HashMap<String, String> params = new HashMap<String, String>();
             params.put("interval", "1min");
-            Map<LocalDateTime, Stock> stocks = stockOperation.intraDay("VOD.L",params);
+            Map<LocalDateTime, Stock> stocks = stockOperation.intraDay("BP.L", params);
             //Closed on the Weekends, so it has no data (Test was ran on a weekend)
             assertEquals(100, stocks.size());
-            for(LocalDateTime key : stocks.keySet()){
-                System.out.println(key+" => "+stocks.get(key));
+            for (LocalDateTime key : stocks.keySet()) {
+                System.out.println(key + " => " + stocks.get(key));
             }
         } catch (UnsupportedEncodingException ex) {
             ex.printStackTrace();
@@ -54,15 +59,14 @@ public class StockTemplateTest extends AbstractServiceTest {
         }
     }
 
-
     @Test
-    public void testDaily(){
+    public void testDaily() {
         try {
             HashMap<String, String> params = new HashMap<String, String>();
-            Map<LocalDate, Stock> stocks = stockOperation.daily("vod.l",params);
+            Map<LocalDate, Stock> stocks = stockOperation.daily("vod.l", params);
             assertEquals(100, stocks.size());
-            for(LocalDate key : stocks.keySet()){
-                System.out.println(key+" => "+stocks.get(key));
+            for (LocalDate key : stocks.keySet()) {
+                System.out.println(key + " => " + stocks.get(key));
             }
         } catch (UnsupportedEncodingException ex) {
             ex.printStackTrace();
@@ -86,13 +90,13 @@ public class StockTemplateTest extends AbstractServiceTest {
     }
 
     @Test
-    public void testDailyAdjustedClose(){
+    public void testDailyAdjustedClose() {
         try {
             HashMap<String, String> params = new HashMap<String, String>();
-            Map<LocalDate, Stock> stocks = stockOperation.dailyAdjustedClose("vod.l",params);
+            Map<LocalDate, Stock> stocks = stockOperation.dailyAdjustedClose("vod.l", params);
             assertEquals(100, stocks.size());
-            for(LocalDate key : stocks.keySet()){
-                System.out.println(key+" => "+stocks.get(key));
+            for (LocalDate key : stocks.keySet()) {
+                System.out.println(key + " => " + stocks.get(key));
             }
         } catch (UnsupportedEncodingException ex) {
             ex.printStackTrace();
@@ -116,10 +120,10 @@ public class StockTemplateTest extends AbstractServiceTest {
     }
 
     @Test
-    public void testWeekly(){
+    public void testWeekly() {
         try {
             HashMap<String, String> params = new HashMap<String, String>();
-            Map<LocalDate, Stock> stocks = stockOperation.weekly("vod.l",params);
+            Map<LocalDate, Stock> stocks = stockOperation.weekly("vod.l", params);
             assertEquals(925, stocks.size());
         } catch (UnsupportedEncodingException ex) {
             ex.printStackTrace();
@@ -141,11 +145,12 @@ public class StockTemplateTest extends AbstractServiceTest {
             fail("Ultra High Frequency Request Exception");
         }
     }
+
     @Test
-    public void testMonthly(){
+    public void testMonthly() {
         try {
             HashMap<String, String> params = new HashMap<String, String>();
-            Map<LocalDate, Stock> stocks = stockOperation.monthly("vod.l",params);
+            Map<LocalDate, Stock> stocks = stockOperation.monthly("vod.l", params);
             assertEquals(212, stocks.size());
         } catch (UnsupportedEncodingException ex) {
             ex.printStackTrace();
