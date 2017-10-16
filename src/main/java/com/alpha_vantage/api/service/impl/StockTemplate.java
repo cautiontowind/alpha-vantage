@@ -197,6 +197,42 @@ public class StockTemplate implements StockOperation {
         return result;
     }
 
+    public LinkedHashMap<LocalDate, Stock> weeklyAdjusted(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException{
+        String function = "TIME_SERIES_WEEKLY_ADJUSTED";
+        String queryString = ALPHA_VANTAGE_API_URL+"function="+function+"&symbol="+symbol+"&apikey="+apiKey+"&";
+        String encodedUrl = options.keySet().stream().map(key -> {
+            try {
+                return key + "=" + UriUtils.encode(options.get(key), "UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }).collect(joining("&", queryString, ""));
+
+        LinkedHashMap<LocalDate, Stock> result = new LinkedHashMap<>();
+        JsonNode jsonNode = restTemplate.getForObject(encodedUrl, JsonNode.class);
+        Iterator<Map.Entry<String,JsonNode>> it = jsonNode.fields();
+        while(it.hasNext()) {
+            Map.Entry<String, JsonNode> mapEntry = it.next();
+            ExceptionUtil.handleException(mapEntry, function);
+            if(mapEntry.getKey().equals("Weekly Adjusted Time Series")){
+                JsonNode node = mapEntry.getValue();
+                Iterator<Map.Entry<String,JsonNode>> timeSeriesIter = node.fields();
+                while(timeSeriesIter.hasNext()){
+                    Map.Entry<String, JsonNode> timeSeriesMap = timeSeriesIter.next();
+                    LocalDate localDate = LocalDate.parse(timeSeriesMap.getKey(), DateTimeFormatter.ISO_LOCAL_DATE);
+                    String open = String.valueOf(timeSeriesMap.getValue().get("1. open")).replaceAll("\"","");
+                    String high = String.valueOf(timeSeriesMap.getValue().get("2. high")).replaceAll("\"","");
+                    String low = String.valueOf(timeSeriesMap.getValue().get("3. low")).replaceAll("\"","");
+                    String close = String.valueOf(timeSeriesMap.getValue().get("4. close")).replaceAll("\"","");
+                    String volume = String.valueOf(timeSeriesMap.getValue().get("5. volume")).replaceAll("\"","");
+                    result.put(localDate, Stock.newStpckInstance(symbol, open, high, low, close,volume));
+                }
+
+            }
+        }
+        return result;
+    }
     @Override
     public LinkedHashMap<LocalDate, Stock> monthly(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException{
         String function = "TIME_SERIES_MONTHLY";
@@ -217,6 +253,43 @@ public class StockTemplate implements StockOperation {
             Map.Entry<String, JsonNode> mapEntry = it.next();
             ExceptionUtil.handleException(mapEntry, function);
             if(mapEntry.getKey().equals("Monthly Time Series")){
+                JsonNode node = mapEntry.getValue();
+                Iterator<Map.Entry<String,JsonNode>> timeSeriesIter = node.fields();
+                while(timeSeriesIter.hasNext()){
+                    Map.Entry<String, JsonNode> timeSeriesMap = timeSeriesIter.next();
+                    LocalDate localDate = LocalDate.parse(timeSeriesMap.getKey(), DateTimeFormatter.ISO_LOCAL_DATE);
+                    String open = String.valueOf(timeSeriesMap.getValue().get("1. open")).replaceAll("\"","");
+                    String high = String.valueOf(timeSeriesMap.getValue().get("2. high")).replaceAll("\"","");
+                    String low = String.valueOf(timeSeriesMap.getValue().get("3. low")).replaceAll("\"","");
+                    String close = String.valueOf(timeSeriesMap.getValue().get("4. close")).replaceAll("\"","");
+                    String volume = String.valueOf(timeSeriesMap.getValue().get("5. volume")).replaceAll("\"","");
+                    result.put(localDate, Stock.newStpckInstance(symbol, open, high, low, close,volume));
+                }
+
+            }
+        }
+        return result;
+    }
+
+    public LinkedHashMap<LocalDate, Stock> monthlyAdjusted(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException{
+        String function = "TIME_SERIES_MONTHLY_ADJUSTED";
+        String queryString = ALPHA_VANTAGE_API_URL+"function="+function+"&symbol="+symbol+"&apikey="+apiKey+"&";
+        String encodedUrl = options.keySet().stream().map(key -> {
+            try {
+                return key + "=" + UriUtils.encode(options.get(key), "UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }).collect(joining("&", queryString, ""));
+
+        LinkedHashMap<LocalDate, Stock> result = new LinkedHashMap<>();
+        JsonNode jsonNode = restTemplate.getForObject(encodedUrl, JsonNode.class);
+        Iterator<Map.Entry<String,JsonNode>> it = jsonNode.fields();
+        while(it.hasNext()) {
+            Map.Entry<String, JsonNode> mapEntry = it.next();
+            ExceptionUtil.handleException(mapEntry, function);
+            if(mapEntry.getKey().equals("Monthly Adjusted Time Series")){
                 JsonNode node = mapEntry.getValue();
                 Iterator<Map.Entry<String,JsonNode>> timeSeriesIter = node.fields();
                 while(timeSeriesIter.hasNext()){
