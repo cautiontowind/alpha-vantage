@@ -4,7 +4,7 @@ import com.zirxin.jalpha_vantage.domain.*;
 import com.zirxin.jalpha_vantage.enums.SeriesType;
 import com.zirxin.jalpha_vantage.enums.TimeInterval;
 import com.zirxin.jalpha_vantage.exception.*;
-import com.zirxin.jalpha_vantage.service.TechnicalIndicatorOperation;
+import com.zirxin.jalpha_vantage.service.ITechnicalIndicatorService;
 import com.zirxin.jalpha_vantage.test.AbstractServiceTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 
 public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
     @Autowired
-    private TechnicalIndicatorOperation technicalIndicatorOperation;
+    private ITechnicalIndicatorService technicalIndicatorOperation;
 
     @Test
     public void testGetSMA() {
@@ -1268,12 +1268,4 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
             fail("Ultra High Frequency Request Exception");
         }
     }
-/**
- @Test public void testGetPercentChange(){
- String change = String.valueOf(technicalIndicatorOperation.getPercentChange(214.7500, 213.7500));
- //0.00467836257
- assertEquals("0.47", change);
-
- }
- **/
 }

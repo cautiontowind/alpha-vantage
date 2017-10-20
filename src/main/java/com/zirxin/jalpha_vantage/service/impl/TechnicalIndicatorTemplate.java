@@ -6,7 +6,7 @@ import com.zirxin.jalpha_vantage.enums.IndicatorType;
 import com.zirxin.jalpha_vantage.enums.SeriesType;
 import com.zirxin.jalpha_vantage.enums.TimeInterval;
 import com.zirxin.jalpha_vantage.exception.*;
-import com.zirxin.jalpha_vantage.service.TechnicalIndicatorOperation;
+import com.zirxin.jalpha_vantage.service.ITechnicalIndicatorService;
 import com.zirxin.jalpha_vantage.util.ExceptionUtil;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriUtils;
@@ -21,7 +21,7 @@ import java.util.Map;
 
 import static java.util.stream.Collectors.joining;
 
-public class TechnicalIndicatorTemplate implements TechnicalIndicatorOperation {
+public class TechnicalIndicatorTemplate implements ITechnicalIndicatorService {
 
     private static final String ALPHA_VANTAGE_API_URL = "http://www.alphavantage.co/query?";
     private static String apiKey;

@@ -3,8 +3,12 @@ package com.zirxin.jalpha_vantage.service.impl;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.zirxin.jalpha_vantage.domain.Stock;
 import com.zirxin.jalpha_vantage.exception.*;
-import com.zirxin.jalpha_vantage.service.StockOperation;
+import com.zirxin.jalpha_vantage.service.IStockService;
+import com.zirxin.jalpha_vantage.service.ServiceProvider;
 import com.zirxin.jalpha_vantage.util.ExceptionUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriUtils;
 
@@ -19,18 +23,23 @@ import java.util.Map;
 
 import static java.util.stream.Collectors.joining;
 
+@Service("IStockService")
+public class StockTemplate implements IStockService {
 
-public class StockTemplate implements StockOperation {
-    private static final String ALPHA_VANTAGE_API_URL = "http://www.alphavantage.co/query?";
-    private static String apiKey;
+    private ServiceProvider serviceProvider;
+
     private final RestTemplate restTemplate;
 
+    private static final String ALPHA_VANTAGE_API_URL = "http://www.alphavantage.co/query?";
 
-    public StockTemplate(RestTemplate restTemplate, String apiKey) {
+    private static String apiKey;
+
+
+    @Autowired
+    public StockTemplate(RestTemplate restTemplate, ServiceProvider serviceProvider) {
         this.restTemplate = restTemplate;
-        this.apiKey = apiKey;
+        this.serviceProvider = serviceProvider;
     }
-
 
     @Override
     public LinkedHashMap<LocalDateTime, Stock> intraDay(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException {

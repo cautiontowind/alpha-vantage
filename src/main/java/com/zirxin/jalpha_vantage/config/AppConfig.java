@@ -1,8 +1,8 @@
 package com.zirxin.jalpha_vantage.config;
 
-import com.zirxin.jalpha_vantage.service.CryptoCurrencyOperation;
-import com.zirxin.jalpha_vantage.service.StockOperation;
-import com.zirxin.jalpha_vantage.service.TechnicalIndicatorOperation;
+import com.zirxin.jalpha_vantage.service.ICryptoCurrencyService;
+import com.zirxin.jalpha_vantage.service.IStockService;
+import com.zirxin.jalpha_vantage.service.ITechnicalIndicatorService;
 import com.zirxin.jalpha_vantage.service.impl.CryptoCurrencyTemplate;
 import com.zirxin.jalpha_vantage.service.impl.StockTemplate;
 import com.zirxin.jalpha_vantage.service.impl.TechnicalIndicatorTemplate;
@@ -18,18 +18,14 @@ public class AppConfig {
 
     private final String apiKey = "1AC06VRKR36YJAND";
 
-    @Bean
-    StockOperation stockOperation() {
-        return new StockTemplate(restTemplate(), apiKey);
-    }
 
     @Bean
-    CryptoCurrencyOperation cryptoCurrencyOperation() {
+    ICryptoCurrencyService cryptoCurrencyOperation() {
         return new CryptoCurrencyTemplate(restTemplate(), apiKey);
     }
 
     @Bean
-    TechnicalIndicatorOperation technicalIndicatorOperation() {
+    ITechnicalIndicatorService technicalIndicatorOperation() {
         return new TechnicalIndicatorTemplate(restTemplate(), apiKey);
     }
 

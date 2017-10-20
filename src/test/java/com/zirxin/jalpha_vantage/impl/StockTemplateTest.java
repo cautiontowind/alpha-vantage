@@ -2,7 +2,7 @@ package com.zirxin.jalpha_vantage.impl;
 
 import com.zirxin.jalpha_vantage.domain.Stock;
 import com.zirxin.jalpha_vantage.exception.*;
-import com.zirxin.jalpha_vantage.service.StockOperation;
+import com.zirxin.jalpha_vantage.service.IStockService;
 import com.zirxin.jalpha_vantage.test.AbstractServiceTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ import static junit.framework.TestCase.fail;
 public class StockTemplateTest extends AbstractServiceTest {
 
     @Autowired
-    StockOperation stockOperation;
+    IStockService stockOperation;
 
 
     @Test

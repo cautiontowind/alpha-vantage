@@ -5,7 +5,7 @@ import com.zirxin.jalpha_vantage.domain.DigitalCurrency;
 import com.zirxin.jalpha_vantage.enums.DigitalCurrencyType;
 import com.zirxin.jalpha_vantage.enums.MarketList;
 import com.zirxin.jalpha_vantage.exception.*;
-import com.zirxin.jalpha_vantage.service.CryptoCurrencyOperation;
+import com.zirxin.jalpha_vantage.service.ICryptoCurrencyService;
 import com.zirxin.jalpha_vantage.test.AbstractServiceTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import static org.junit.Assert.assertEquals;
 
 public class CrypoCurrencyTypeTemplateTest extends AbstractServiceTest {
     @Autowired
-    CryptoCurrencyOperation cryptoCurrencyOperation;
+    ICryptoCurrencyService cryptoCurrencyOperation;
 
     @Test
     public void testExchangeRateTest() {

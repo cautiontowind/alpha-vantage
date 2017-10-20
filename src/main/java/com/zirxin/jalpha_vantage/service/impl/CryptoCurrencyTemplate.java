@@ -9,7 +9,7 @@ import com.zirxin.jalpha_vantage.enums.CurrencyType;
 import com.zirxin.jalpha_vantage.enums.DigitalCurrencyType;
 import com.zirxin.jalpha_vantage.enums.MarketList;
 import com.zirxin.jalpha_vantage.exception.*;
-import com.zirxin.jalpha_vantage.service.CryptoCurrencyOperation;
+import com.zirxin.jalpha_vantage.service.ICryptoCurrencyService;
 import com.zirxin.jalpha_vantage.util.ExceptionUtil;
 import org.springframework.web.client.RestTemplate;
 
@@ -21,7 +21,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class CryptoCurrencyTemplate implements CryptoCurrencyOperation {
+public class CryptoCurrencyTemplate implements ICryptoCurrencyService {
     private static final String ALPHA_VANTAGE_API_URL = "http://www.alphavantage.co/query?";
     private static String apiKey;
     private final RestTemplate restTemplate;
