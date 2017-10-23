@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ac2956aa-4593-4cef-a425-c965f01e026b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/taskHistory.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/com/alpha_vantage/api/config/AppConfig.class" afterPath="$PROJECT_DIR$/build/classes/main/com/alpha_vantage/api/config/AppConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/com/alpha_vantage/api/domain/Stock.class" afterPath="$PROJECT_DIR$/build/classes/main/com/alpha_vantage/api/domain/Stock.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/com/alpha_vantage/api/service/impl/StockTemplate.class" afterPath="$PROJECT_DIR$/build/classes/main/com/alpha_vantage/api/service/impl/StockTemplate.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/com/alpha_vantage/api/util/ExceptionUtil.class" afterPath="$PROJECT_DIR$/build/classes/main/com/alpha_vantage/api/util/ExceptionUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/libs/com.alpha-vantage.api-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/build/libs/com.alpha-vantage.api-1.0-SNAPSHOT.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/alpha_vantage/api/service/impl/CryptoCurrencyTemplate.class" afterPath="$PROJECT_DIR$/out/production/classes/com/alpha_vantage/api/service/impl/CryptoCurrencyTemplate.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/fileContent/fileContent.lock" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/fileContent/fileContent.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/taskHistory.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/debug.log" afterPath="$PROJECT_DIR$/logs/debug.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/alpha_vantage/api/service/StockOperation.java" afterPath="$PROJECT_DIR$/src/main/java/com/alpha_vantage/api/service/StockOperation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/alpha_vantage/api/service/impl/StockTemplate.java" afterPath="$PROJECT_DIR$/src/main/java/com/alpha_vantage/api/service/impl/StockTemplate.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/alpha_vantage/api/impl/StockTemplateTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/alpha_vantage/api/impl/StockTemplateTest.java" />
-    </list>
+    <list default="true" id="ac2956aa-4593-4cef-a425-c965f01e026b" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -89,8 +72,8 @@
       <file leaf-file-name="StockTemplateTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/alpha_vantage/api/impl/StockTemplateTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="148" column="28" lean-forward="true" selection-start-line="148" selection-start-column="28" selection-end-line="148" selection-end-column="28" />
+            <state relative-caret-position="139">
+              <caret line="149" column="13" lean-forward="false" selection-start-line="149" selection-start-column="13" selection-end-line="149" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -615,58 +598,7 @@
               <item name="alpha-vantage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.alpha-vantage.api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alpha-vantage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.alpha-vantage.api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alpha-vantage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.alpha-vantage.api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alpha-vantage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.alpha-vantage.api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alpha-vantage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.alpha-vantage.api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alpha-vantage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.alpha-vantage.api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alpha-vantage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -707,7 +639,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.StockTemplateTest.testWeeklyAdjusted">
+  <component name="RunManager" selected="Gradle.alpha-vantage [publishToMavenLocal]">
     <configuration name="CrypoCurrencyTypeTemplateTest.testMonthly" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -935,14 +867,11 @@
       <workItem from="1506287232062" duration="563000" />
       <workItem from="1506962898252" duration="932000" />
       <workItem from="1507919579253" duration="18433000" />
-      <workItem from="1508160595903" duration="1926000" />
+      <workItem from="1508160595903" duration="3179000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CrypoCurrencyTypeTemplateTest_testMonthly - 2017.10.14 at 14h 51m 53s.xml">
-      <configuration name="CrypoCurrencyTypeTemplateTest.testMonthly" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="CrypoCurrencyTypeTemplateTest_testMonthly - 2017.10.14 at 14h 56m 16s.xml">
       <configuration name="CrypoCurrencyTypeTemplateTest.testMonthly" configurationId="JUnit" />
     </history-entry>
@@ -970,13 +899,15 @@
     <history-entry file="StockTemplateTest_testMonthlyAdjusted - 2017.10.16 at 15h 09m 01s.xml">
       <configuration name="StockTemplateTest.testMonthlyAdjusted" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="StockTemplateTest_testWeeklyAdjusted - 2017.10.16 at 15h 09m 50s.xml">
+      <configuration name="StockTemplateTest.testWeeklyAdjusted" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85519000" />
+    <option name="totallyTimeSpent" value="86772000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="23" width="1436" height="877" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
@@ -996,11 +927,11 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32992327" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992327" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992327" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992327" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20373027" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20373027" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Reviews" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22238164" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1135,8 +1066,8 @@
         <state relative-caret-position="120">
           <caret line="16" column="51" lean-forward="false" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
           <folding>
-            <element signature="e#1059#1060#0" expanded="true" />
-            <element signature="e#1132#1133#0" expanded="true" />
+            <element signature="e#1059#1060#0" expanded="false" />
+            <element signature="e#1132#1133#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1349,8 +1280,8 @@
         <state relative-caret-position="255">
           <caret line="29" column="4" lean-forward="false" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
           <folding>
-            <element signature="e#1059#1060#0" expanded="true" />
-            <element signature="e#1132#1133#0" expanded="true" />
+            <element signature="e#1059#1060#0" expanded="false" />
+            <element signature="e#1132#1133#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1400,7 +1331,7 @@
         <state relative-caret-position="390">
           <caret line="30" column="17" lean-forward="false" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1468,22 +1399,22 @@
         <state relative-caret-position="105">
           <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
-            <element signature="e#220#221#0" expanded="true" />
-            <element signature="e#249#250#0" expanded="true" />
-            <element signature="e#293#294#0" expanded="true" />
-            <element signature="e#329#330#0" expanded="true" />
-            <element signature="e#362#363#0" expanded="true" />
-            <element signature="e#391#392#0" expanded="true" />
-            <element signature="e#435#436#0" expanded="true" />
-            <element signature="e#471#472#0" expanded="true" />
-            <element signature="e#507#508#0" expanded="true" />
-            <element signature="e#537#538#0" expanded="true" />
-            <element signature="e#583#584#0" expanded="true" />
-            <element signature="e#621#622#0" expanded="true" />
-            <element signature="e#656#657#0" expanded="true" />
-            <element signature="e#686#687#0" expanded="true" />
-            <element signature="e#732#733#0" expanded="true" />
-            <element signature="e#770#771#0" expanded="true" />
+            <element signature="e#220#221#0" expanded="false" />
+            <element signature="e#249#250#0" expanded="false" />
+            <element signature="e#293#294#0" expanded="false" />
+            <element signature="e#329#330#0" expanded="false" />
+            <element signature="e#362#363#0" expanded="false" />
+            <element signature="e#391#392#0" expanded="false" />
+            <element signature="e#435#436#0" expanded="false" />
+            <element signature="e#471#472#0" expanded="false" />
+            <element signature="e#507#508#0" expanded="false" />
+            <element signature="e#537#538#0" expanded="false" />
+            <element signature="e#583#584#0" expanded="false" />
+            <element signature="e#621#622#0" expanded="false" />
+            <element signature="e#656#657#0" expanded="false" />
+            <element signature="e#686#687#0" expanded="false" />
+            <element signature="e#732#733#0" expanded="false" />
+            <element signature="e#770#771#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1529,8 +1460,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/alpha_vantage/api/impl/StockTemplateTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="148" column="28" lean-forward="true" selection-start-line="148" selection-start-column="28" selection-end-line="148" selection-end-column="28" />
+        <state relative-caret-position="139">
+          <caret line="149" column="13" lean-forward="false" selection-start-line="149" selection-start-column="13" selection-end-line="149" selection-end-column="13" />
           <folding />
         </state>
       </provider>
