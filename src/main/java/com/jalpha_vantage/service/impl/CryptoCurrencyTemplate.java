@@ -96,8 +96,9 @@ public class CryptoCurrencyTemplate implements ICryptoCurrencyService {
                     LocalDateTime dateTime = LocalDateTime.parse(timeSeriesMap.getKey(), formatter);
                     String price = String.valueOf(timeSeriesMap.getValue().get("1a. price (" + market + ")")).replaceAll("\"", "");
                     String usdPrice = String.valueOf(timeSeriesMap.getValue().get("1b. price (USD)")).replaceAll("\"", "");
-                    String vol = String.valueOf(timeSeriesMap.getValue().get("volume (" + market + ")")).replaceAll("\"", "");
-                    result.put(dateTime, DigitalCurrencyIntraDay.newInstance(symbol, market.name(), price, usdPrice,vol));
+                    String vol = String.valueOf(timeSeriesMap.getValue().get("2. volume")).replaceAll("\"", "");
+                    String marketCap = String.valueOf(timeSeriesMap.getValue().get("3. market cap (USD)")).replaceAll("\"", "");
+                    result.put(dateTime, DigitalCurrencyIntraDay.newInstance(symbol, market.name(), price, usdPrice,vol,marketCap));
                 }
 
             }
@@ -157,8 +158,10 @@ public class CryptoCurrencyTemplate implements ICryptoCurrencyService {
                     String close = String.valueOf(timeSeriesMap.getValue().get("4a. close (" + market + ")")).replaceAll("\"", "");
                     String usdClose = String.valueOf(timeSeriesMap.getValue().get("4b. close (USD)")).replaceAll("\"", "");
 
-                    String vol = String.valueOf(timeSeriesMap.getValue().get("5a. volume (" + market + ")")).replaceAll("\"", "");
-                    result.put(localDate, DigitalCurrencyDaily.newInstance(symbol, market.name(), open, usdOpen, high,usdHigh, low,usdLow, close, usdClose, vol));
+                    String vol = String.valueOf(timeSeriesMap.getValue().get("volume")).replaceAll("\"", "");
+
+                    String marketCap = String.valueOf(timeSeriesMap.getValue().get("6. market cap (USD)")).replaceAll("\"", "");
+                    result.put(localDate, DigitalCurrencyDaily.newInstance(symbol, market.name(), open, usdOpen, high,usdHigh, low,usdLow, close, usdClose, vol, marketCap));
                 }
 
             }

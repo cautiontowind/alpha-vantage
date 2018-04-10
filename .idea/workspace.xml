@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ac2956aa-4593-4cef-a425-c965f01e026b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/domain/DigitalCurrency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/domain/DigitalCurrency.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/domain/DigitalCurrencyDaily.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/domain/DigitalCurrencyDaily.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/domain/DigitalCurrencyIntraDay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/domain/DigitalCurrencyIntraDay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/CryptoCurrencyTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/CryptoCurrencyTemplate.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -58,21 +62,62 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="CurrencySymbol.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/enums/CurrencySymbol.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-168">
+            <state relative-caret-position="30">
               <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DigitalCurrency.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DigitalCurrency.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/domain/DigitalCurrency.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="41" column="46" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
+            <state relative-caret-position="338">
+              <caret line="49" column="55" selection-start-line="49" selection-start-column="55" selection-end-line="49" selection-end-column="55" />
+              <folding>
+                <element signature="e#715#716#0" expanded="true" />
+                <element signature="e#751#752#0" expanded="true" />
+                <element signature="e#787#788#0" expanded="true" />
+                <element signature="e#819#820#0" expanded="true" />
+                <element signature="e#869#870#0" expanded="true" />
+                <element signature="e#911#912#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DigitalCurrencyDaily.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/domain/DigitalCurrencyDaily.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="120" column="8" selection-start-line="120" selection-start-column="8" selection-end-line="120" selection-end-column="8" />
+              <folding>
+                <element signature="e#2416#2417#0" expanded="true" />
+                <element signature="e#2448#2449#0" expanded="true" />
+                <element signature="e#2498#2499#0" expanded="true" />
+                <element signature="e#2540#2541#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CryptoCurrencyTemplate.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/CryptoCurrencyTemplate.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="371">
+              <caret line="99" column="36" selection-start-line="99" selection-start-column="36" selection-end-line="99" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StockTemplate.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/StockTemplate.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-677">
+              <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -109,6 +154,7 @@
       <find>web</find>
       <find>1AC06VRKR36YJAND</find>
       <find>DigitalCurrencyType</find>
+      <find>2. volume</find>
     </findStrings>
     <replaceStrings>
       <replace>) throws InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException;</replace>
@@ -196,12 +242,12 @@
         <option value="$PROJECT_DIR$/LICENSE.txt" />
         <option value="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/enums/CryptoSymbol.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/enums/CurrencySymbol.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/domain/DigitalCurrency.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/domain/DigitalCurrencyIntraDay.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/domain/DigitalCurrencyDaily.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/ICryptoCurrencyService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/CryptoCurrencyTemplate.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/util/ExceptionUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/domain/DigitalCurrency.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/domain/DigitalCurrencyDaily.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/domain/DigitalCurrencyIntraDay.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/CryptoCurrencyTemplate.java" />
       </list>
     </option>
   </component>
@@ -229,9 +275,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -281,7 +327,17 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="jalpha_vantage" type="462c0819:PsiDirectoryNode" />
-              <item name="enums" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="alpha-vantage" type="b2602c69:ProjectViewProjectNode" />
+              <item name="alpha-vantage" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="jalpha_vantage" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -546,7 +602,8 @@
       <workItem from="1523207288080" duration="59000" />
       <workItem from="1523271950028" duration="1292000" />
       <workItem from="1523291155738" duration="60000" />
-      <workItem from="1523366345249" duration="623000" />
+      <workItem from="1523366345249" duration="971000" />
+      <workItem from="1523373545559" duration="586000" />
     </task>
     <servers />
   </component>
@@ -583,7 +640,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108774000" />
+    <option name="totallyTimeSpent" value="109708000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
@@ -601,11 +658,11 @@
       <window_info anchor="bottom" id="Version Control" order="1" />
       <window_info anchor="bottom" id="Run" order="8" weight="0.32948717" />
       <window_info anchor="bottom" id="Spring" order="2" weight="0.32992327" />
-      <window_info anchor="bottom" id="Terminal" order="3" visible="true" weight="0.32948717" />
+      <window_info anchor="bottom" id="Terminal" order="3" weight="0.32948717" />
       <window_info id="Capture Tool" order="4" />
       <window_info anchor="right" id="Remote Host" order="1" />
       <window_info id="Designer" order="0" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.24177396" />
+      <window_info content_ui="combo" id="Project" order="5" weight="0.2453505" />
       <window_info anchor="right" id="Database" order="2" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="11" weight="0.25" />
@@ -630,34 +687,34 @@
       <window_info anchor="right" id="Remote Host" order="1" />
       <window_info anchor="bottom" id="Spring" order="2" weight="0.32992327" />
       <window_info id="Image Layers" order="2" />
-      <window_info anchor="right" id="Commander" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="8" weight="0.32948717" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="11" weight="0.25" />
       <window_info id="UI Designer" order="1" />
       <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="3" weight="0.32948717" />
+      <window_info anchor="bottom" id="Terminal" order="3" visible="true" weight="0.32948717" />
       <window_info id="Capture Tool" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Redis Servers" order="10" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="0" weight="0.32948717" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="12" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="7" weight="0.32992327" />
       <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="1" />
       <window_info anchor="right" id="Maven Projects" order="0" />
       <window_info anchor="right" id="News Feed" order="3" />
-      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" order="9" weight="0.4" />
       <window_info anchor="right" id="Gradle" order="6" weight="0.22238164" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.23819743" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.2453505" />
       <window_info anchor="right" id="Database" order="2" />
       <window_info anchor="bottom" id="Message" order="6" />
       <window_info anchor="bottom" id="TODO" order="12" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
       <window_info anchor="bottom" id="Reviews" order="4" />
-      <window_info anchor="right" id="Redis Servers" order="10" />
+      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
-      <window_info anchor="bottom" id="Find" order="7" weight="0.32992327" />
-      <window_info anchor="bottom" id="Run" order="8" visible="true" weight="0.32948717" />
       <window_info anchor="bottom" id="Debug" order="9" weight="0.39897698" />
     </layout-to-restore>
   </component>
@@ -693,6 +750,42 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/enums/CurrencySymbol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/domain/DigitalCurrency.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="41" column="46" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
+          <folding>
+            <element signature="e#715#716#0" expanded="true" />
+            <element signature="e#751#752#0" expanded="true" />
+            <element signature="e#787#788#0" expanded="true" />
+            <element signature="e#819#820#0" expanded="true" />
+            <element signature="e#869#870#0" expanded="true" />
+            <element signature="e#911#912#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/domain/DigitalCurrencyIntraDay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/CryptoCurrencyTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1125">
+          <caret line="94" column="62" selection-start-line="94" selection-start-column="62" selection-end-line="94" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/enums/CryptoSymbol.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -707,20 +800,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/StockTemplate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/CryptoCurrencyTemplate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="71" column="46" selection-start-line="71" selection-start-column="46" selection-end-line="71" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/jalpha_vantage/impl/CrypoCurrencyTypeTemplateTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
@@ -730,15 +809,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/enums/CurrencySymbol.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-168">
+        <state relative-caret-position="30">
           <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/StockTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-677">
+          <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/domain/DigitalCurrency.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="41" column="46" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
+        <state relative-caret-position="338">
+          <caret line="49" column="55" selection-start-line="49" selection-start-column="55" selection-end-line="49" selection-end-column="55" />
+          <folding>
+            <element signature="e#715#716#0" expanded="true" />
+            <element signature="e#751#752#0" expanded="true" />
+            <element signature="e#787#788#0" expanded="true" />
+            <element signature="e#819#820#0" expanded="true" />
+            <element signature="e#869#870#0" expanded="true" />
+            <element signature="e#911#912#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/domain/DigitalCurrencyIntraDay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="45" column="58" selection-start-line="45" selection-start-column="58" selection-end-line="45" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/domain/DigitalCurrencyDaily.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="120" column="8" selection-start-line="120" selection-start-column="8" selection-end-line="120" selection-end-column="8" />
+          <folding>
+            <element signature="e#2416#2417#0" expanded="true" />
+            <element signature="e#2448#2449#0" expanded="true" />
+            <element signature="e#2498#2499#0" expanded="true" />
+            <element signature="e#2540#2541#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/CryptoCurrencyTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="99" column="36" selection-start-line="99" selection-start-column="36" selection-end-line="99" selection-end-column="36" />
         </state>
       </provider>
     </entry>

@@ -12,7 +12,8 @@ public class DigitalCurrencyDaily extends DigitalCurrency {
     String close;
     String usdClose;
 
-    private DigitalCurrencyDaily(CryptoSymbol symbol, String market, String open,String usdOpen, String high,String usdHigh, String low,String usdLow, String close,String usdClose, String volume) {
+
+    private DigitalCurrencyDaily(CryptoSymbol symbol, String market, String open,String usdOpen, String high,String usdHigh, String low,String usdLow, String close,String usdClose, String volume, String marketCap) {
         this.symbol = symbol;
         this.market = market;
         this.open = open;
@@ -24,10 +25,11 @@ public class DigitalCurrencyDaily extends DigitalCurrency {
         this.close = close;
         this.usdClose = usdClose;
         this.volume = volume;
+        this.marketCap = marketCap;
     }
 
-    public static DigitalCurrencyDaily newInstance(CryptoSymbol symbol, String market, String open,String usdOpen, String high,String usdHigh, String low, String usdLow, String close, String usdClose, String volume) {
-        return new DigitalCurrencyDaily(symbol, market, open,usdOpen,high, usdHigh ,low,usdLow, close, usdClose, volume);
+    public static DigitalCurrencyDaily newInstance(CryptoSymbol symbol, String market, String open,String usdOpen, String high,String usdHigh, String low, String usdLow, String close, String usdClose, String volume, String marketCap) {
+        return new DigitalCurrencyDaily(symbol, market, open,usdOpen,high, usdHigh ,low,usdLow, close, usdClose, volume, marketCap);
     }
 
     public String getOpen() {
@@ -94,6 +96,14 @@ public class DigitalCurrencyDaily extends DigitalCurrency {
         this.usdClose = usdClose;
     }
 
+    public String getMarketCap() {
+        return marketCap;
+    }
+
+    public void setMarketCap(String marketCap) {
+        this.marketCap = marketCap;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -108,6 +118,7 @@ public class DigitalCurrencyDaily extends DigitalCurrency {
         sb.append("Close: ").append(close).append(", ");
         sb.append("Close (USD): ").append(usdClose).append(", ");
         sb.append("Volume: ").append(volume).append(", ");
+        sb.append("Market Cap (USD): ").append(marketCap);
         return sb.toString();
     }
 }
