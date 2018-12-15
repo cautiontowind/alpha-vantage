@@ -49,7 +49,13 @@ public class StockTemplate implements IStockService {
     }
 
     @Override
-    public LinkedHashMap<LocalDateTime, Stock> intraDay(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException {
+    public LinkedHashMap<LocalDateTime, Stock> intraDay(String symbol, HashMap<String, String> options)
+            throws InvalidApiKeyException,
+            InvalidFunctionOptionException,
+            MalFormattedFunctionException,
+            MissingApiKeyException,
+            UltraHighFrequencyRequestException,
+            ApiLimitExceeded {
         String function = "TIME_SERIES_INTRADAY";
         String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&symbol=" + symbol + "&apikey=" + apiKey + "&";
 
@@ -77,12 +83,8 @@ public class StockTemplate implements IStockService {
                     Map.Entry<String, JsonNode> timeSeriesMap = timeSeriesIter.next();
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                     LocalDateTime dateTime = LocalDateTime.parse(timeSeriesMap.getKey(), formatter);
-                    String open = String.valueOf(timeSeriesMap.getValue().get("1. open")).replaceAll("\"", "");
-                    String high = String.valueOf(timeSeriesMap.getValue().get("2. high")).replaceAll("\"", "");
-                    String low = String.valueOf(timeSeriesMap.getValue().get("3. low")).replaceAll("\"", "");
-                    String close = String.valueOf(timeSeriesMap.getValue().get("4. close")).replaceAll("\"", "");
-                    String volume = String.valueOf(timeSeriesMap.getValue().get("5. volume")).replaceAll("\"", "");
-                    result.put(dateTime, Stock.newStpckInstance(symbol, open, high, low, close, volume));
+                    Stock stock = createStock(symbol, timeSeriesMap);
+                    result.put(dateTime, stock);
                 }
 
             }
@@ -92,8 +94,9 @@ public class StockTemplate implements IStockService {
     }
 
 
+
     @Override
-    public LinkedHashMap<LocalDate, Stock> daily(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException {
+    public LinkedHashMap<LocalDate, Stock> daily(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String function = "TIME_SERIES_DAILY";
         String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&symbol=" + symbol + "&apikey=" + apiKey + "&";
         String encodedUrl = options.keySet().stream().map(key -> {
@@ -117,12 +120,8 @@ public class StockTemplate implements IStockService {
                 while (timeSeriesIter.hasNext()) {
                     Map.Entry<String, JsonNode> timeSeriesMap = timeSeriesIter.next();
                     LocalDate localDate = LocalDate.parse(timeSeriesMap.getKey(), DateTimeFormatter.ISO_LOCAL_DATE);
-                    String open = String.valueOf(timeSeriesMap.getValue().get("1. open")).replaceAll("\"", "");
-                    String high = String.valueOf(timeSeriesMap.getValue().get("2. high")).replaceAll("\"", "");
-                    String low = String.valueOf(timeSeriesMap.getValue().get("3. low")).replaceAll("\"", "");
-                    String close = String.valueOf(timeSeriesMap.getValue().get("4. close")).replaceAll("\"", "");
-                    String volume = String.valueOf(timeSeriesMap.getValue().get("5. volume")).replaceAll("\"", "");
-                    result.put(localDate, Stock.newStpckInstance(symbol, open, high, low, close, volume));
+                    Stock stock = createStock(symbol, timeSeriesMap);
+                    result.put(localDate, stock);
                 }
 
             }
@@ -130,8 +129,11 @@ public class StockTemplate implements IStockService {
         return result;
     }
 
+
+
+
     @Override
-    public LinkedHashMap<LocalDate, Stock> dailyAdjustedClose(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException {
+    public LinkedHashMap<LocalDate, Stock> dailyAdjustedClose(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String function = "TIME_SERIES_DAILY_ADJUSTED";
         String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&symbol=" + symbol + "&apikey=" + apiKey + "&";
         String encodedUrl = options.keySet().stream().map(key -> {
@@ -172,8 +174,10 @@ public class StockTemplate implements IStockService {
         return result;
     }
 
+
+
     @Override
-    public LinkedHashMap<LocalDate, Stock> weekly(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException {
+    public LinkedHashMap<LocalDate, Stock> weekly(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String function = "TIME_SERIES_WEEKLY";
         String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&symbol=" + symbol + "&apikey=" + apiKey + "&";
         String encodedUrl = options.keySet().stream().map(key -> {
@@ -197,12 +201,8 @@ public class StockTemplate implements IStockService {
                 while (timeSeriesIter.hasNext()) {
                     Map.Entry<String, JsonNode> timeSeriesMap = timeSeriesIter.next();
                     LocalDate localDate = LocalDate.parse(timeSeriesMap.getKey(), DateTimeFormatter.ISO_LOCAL_DATE);
-                    String open = String.valueOf(timeSeriesMap.getValue().get("1. open")).replaceAll("\"", "");
-                    String high = String.valueOf(timeSeriesMap.getValue().get("2. high")).replaceAll("\"", "");
-                    String low = String.valueOf(timeSeriesMap.getValue().get("3. low")).replaceAll("\"", "");
-                    String close = String.valueOf(timeSeriesMap.getValue().get("4. close")).replaceAll("\"", "");
-                    String volume = String.valueOf(timeSeriesMap.getValue().get("5. volume")).replaceAll("\"", "");
-                    result.put(localDate, Stock.newStpckInstance(symbol, open, high, low, close, volume));
+                    Stock stock = createStock(symbol, timeSeriesMap);
+                    result.put(localDate, stock);
                 }
 
             }
@@ -210,7 +210,9 @@ public class StockTemplate implements IStockService {
         return result;
     }
 
-    public LinkedHashMap<LocalDate, Stock> weeklyAdjusted(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException {
+
+
+    public LinkedHashMap<LocalDate, Stock> weeklyAdjusted(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String function = "TIME_SERIES_WEEKLY_ADJUSTED";
         String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&symbol=" + symbol + "&apikey=" + apiKey + "&";
         String encodedUrl = options.keySet().stream().map(key -> {
@@ -234,12 +236,8 @@ public class StockTemplate implements IStockService {
                 while (timeSeriesIter.hasNext()) {
                     Map.Entry<String, JsonNode> timeSeriesMap = timeSeriesIter.next();
                     LocalDate localDate = LocalDate.parse(timeSeriesMap.getKey(), DateTimeFormatter.ISO_LOCAL_DATE);
-                    String open = String.valueOf(timeSeriesMap.getValue().get("1. open")).replaceAll("\"", "");
-                    String high = String.valueOf(timeSeriesMap.getValue().get("2. high")).replaceAll("\"", "");
-                    String low = String.valueOf(timeSeriesMap.getValue().get("3. low")).replaceAll("\"", "");
-                    String close = String.valueOf(timeSeriesMap.getValue().get("4. close")).replaceAll("\"", "");
-                    String volume = String.valueOf(timeSeriesMap.getValue().get("5. volume")).replaceAll("\"", "");
-                    result.put(localDate, Stock.newStpckInstance(symbol, open, high, low, close, volume));
+                    Stock stock = createStock(symbol, timeSeriesMap);
+                    result.put(localDate, stock);
                 }
 
             }
@@ -247,8 +245,10 @@ public class StockTemplate implements IStockService {
         return result;
     }
 
+
+
     @Override
-    public LinkedHashMap<LocalDate, Stock> monthly(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException {
+    public LinkedHashMap<LocalDate, Stock> monthly(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String function = "TIME_SERIES_MONTHLY";
         String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&symbol=" + symbol + "&apikey=" + apiKey + "&";
         String encodedUrl = options.keySet().stream().map(key -> {
@@ -272,12 +272,8 @@ public class StockTemplate implements IStockService {
                 while (timeSeriesIter.hasNext()) {
                     Map.Entry<String, JsonNode> timeSeriesMap = timeSeriesIter.next();
                     LocalDate localDate = LocalDate.parse(timeSeriesMap.getKey(), DateTimeFormatter.ISO_LOCAL_DATE);
-                    String open = String.valueOf(timeSeriesMap.getValue().get("1. open")).replaceAll("\"", "");
-                    String high = String.valueOf(timeSeriesMap.getValue().get("2. high")).replaceAll("\"", "");
-                    String low = String.valueOf(timeSeriesMap.getValue().get("3. low")).replaceAll("\"", "");
-                    String close = String.valueOf(timeSeriesMap.getValue().get("4. close")).replaceAll("\"", "");
-                    String volume = String.valueOf(timeSeriesMap.getValue().get("5. volume")).replaceAll("\"", "");
-                    result.put(localDate, Stock.newStpckInstance(symbol, open, high, low, close, volume));
+                    Stock stock = createStock(symbol, timeSeriesMap);
+                    result.put(localDate, stock);
                 }
 
             }
@@ -285,7 +281,9 @@ public class StockTemplate implements IStockService {
         return result;
     }
 
-    public LinkedHashMap<LocalDate, Stock> monthlyAdjusted(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException {
+
+
+    public LinkedHashMap<LocalDate, Stock> monthlyAdjusted(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String function = "TIME_SERIES_MONTHLY_ADJUSTED";
         String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&symbol=" + symbol + "&apikey=" + apiKey + "&";
         String encodedUrl = options.keySet().stream().map(key -> {
@@ -309,17 +307,24 @@ public class StockTemplate implements IStockService {
                 while (timeSeriesIter.hasNext()) {
                     Map.Entry<String, JsonNode> timeSeriesMap = timeSeriesIter.next();
                     LocalDate localDate = LocalDate.parse(timeSeriesMap.getKey(), DateTimeFormatter.ISO_LOCAL_DATE);
-                    String open = String.valueOf(timeSeriesMap.getValue().get("1. open")).replaceAll("\"", "");
-                    String high = String.valueOf(timeSeriesMap.getValue().get("2. high")).replaceAll("\"", "");
-                    String low = String.valueOf(timeSeriesMap.getValue().get("3. low")).replaceAll("\"", "");
-                    String close = String.valueOf(timeSeriesMap.getValue().get("4. close")).replaceAll("\"", "");
-                    String volume = String.valueOf(timeSeriesMap.getValue().get("5. volume")).replaceAll("\"", "");
-                    result.put(localDate, Stock.newStpckInstance(symbol, open, high, low, close, volume));
+                    Stock stock = createStock(symbol, timeSeriesMap);
+                    result.put(localDate, stock);
                 }
 
             }
         }
         return result;
+    }
+
+
+
+    Stock createStock(String symbol, Map.Entry<String, JsonNode> seriesMap){
+        String open = String.valueOf(seriesMap.getValue().get("1. open")).replaceAll("\"", "");
+        String high = String.valueOf(seriesMap.getValue().get("2. high")).replaceAll("\"", "");
+        String low = String.valueOf(seriesMap.getValue().get("3. low")).replaceAll("\"", "");
+        String close = String.valueOf(seriesMap.getValue().get("4. close")).replaceAll("\"", "");
+        String volume = String.valueOf(seriesMap.getValue().get("5. volume")).replaceAll("\"", "");
+        return Stock.newStpckInstance(symbol, open, high, low, close, volume);
     }
 
 

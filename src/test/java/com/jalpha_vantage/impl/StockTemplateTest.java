@@ -51,6 +51,9 @@ public class StockTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -81,6 +84,9 @@ public class StockTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -111,6 +117,9 @@ public class StockTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -138,6 +147,9 @@ public class StockTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -165,6 +177,9 @@ public class StockTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -192,6 +207,9 @@ public class StockTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -219,6 +237,9 @@ public class StockTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 }

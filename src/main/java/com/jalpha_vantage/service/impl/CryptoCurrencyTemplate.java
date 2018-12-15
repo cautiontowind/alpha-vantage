@@ -32,7 +32,7 @@ public class CryptoCurrencyTemplate implements ICryptoCurrencyService {
     }
 
     @Override
-    public Currency exchangeRate(CurrencySymbol fromCurrency, CurrencySymbol toCurrency) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException {
+    public Currency exchangeRate(CurrencySymbol fromCurrency, CurrencySymbol toCurrency) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String fromCurrencyStr = String.valueOf(fromCurrency);
         String toCurrencyStr = String.valueOf(toCurrency);
         Currency currency = requestApiData(fromCurrencyStr, toCurrencyStr);
@@ -40,7 +40,7 @@ public class CryptoCurrencyTemplate implements ICryptoCurrencyService {
     }
 
     @Override
-    public Currency exchangeRate(CurrencySymbol fromCurrency, DigitalCurrency toCurrency) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException {
+    public Currency exchangeRate(CurrencySymbol fromCurrency, DigitalCurrency toCurrency) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String fromCurrencyStr = String.valueOf(fromCurrency);
         String toCurrencyStr = String.valueOf(toCurrency).replace("_", "");
         Currency currency = requestApiData(fromCurrencyStr, toCurrencyStr);
@@ -49,7 +49,7 @@ public class CryptoCurrencyTemplate implements ICryptoCurrencyService {
 
 
     @Override
-    public Currency exchangeRate(CryptoSymbol fromCurrency, CurrencySymbol toCurrency) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException {
+    public Currency exchangeRate(CryptoSymbol fromCurrency, CurrencySymbol toCurrency) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String fromCurrencyStr = String.valueOf(fromCurrency).replace("_", "");
         String toCurrencyStr = String.valueOf(toCurrency);
         Currency currency = requestApiData(fromCurrencyStr, toCurrencyStr);
@@ -57,7 +57,7 @@ public class CryptoCurrencyTemplate implements ICryptoCurrencyService {
     }
 
     @Override
-    public Currency exchangeRate(CryptoSymbol fromCurrency, CryptoSymbol toCurrency) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException {
+    public Currency exchangeRate(CryptoSymbol fromCurrency, CryptoSymbol toCurrency) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String fromCurrencyStr = String.valueOf(fromCurrency).replace("_", "");
         String toCurrencyStr = String.valueOf(toCurrency).replace("_", "");
         Currency currency = requestApiData(fromCurrencyStr, toCurrencyStr);
@@ -65,7 +65,7 @@ public class CryptoCurrencyTemplate implements ICryptoCurrencyService {
     }
 
     @Override
-    public LinkedHashMap<LocalDateTime, DigitalCurrency> intraday(CryptoSymbol symbol, MarketList market) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException {
+    public LinkedHashMap<LocalDateTime, DigitalCurrency> intraday(CryptoSymbol symbol, MarketList market) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String function = "DIGITAL_CURRENCY_INTRADAY";
 
         String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&symbol=" + String.valueOf(symbol).replace("_", "") + "&market=" + market.toString() + "&apikey=" + apiKey + "&";
@@ -108,27 +108,27 @@ public class CryptoCurrencyTemplate implements ICryptoCurrencyService {
     }
 
     @Override
-    public LinkedHashMap<LocalDate, DigitalCurrency> daily(CryptoSymbol symbol, MarketList market) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException {
+    public LinkedHashMap<LocalDate, DigitalCurrency> daily(CryptoSymbol symbol, MarketList market) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String function = "DIGITAL_CURRENCY_DAILY";
         LinkedHashMap<LocalDate, DigitalCurrency> result = requestApiData(function, symbol, market);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, DigitalCurrency> weekly(CryptoSymbol symbol, MarketList market) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException {
+    public LinkedHashMap<LocalDate, DigitalCurrency> weekly(CryptoSymbol symbol, MarketList market) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String function = "DIGITAL_CURRENCY_WEEKLY";
         LinkedHashMap<LocalDate, DigitalCurrency> result = requestApiData(function, symbol, market);
         return result;
     }
 
     @Override
-    public LinkedHashMap<LocalDate, DigitalCurrency> monthly(CryptoSymbol symbol, MarketList market) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException {
+    public LinkedHashMap<LocalDate, DigitalCurrency> monthly(CryptoSymbol symbol, MarketList market) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String function = "DIGITAL_CURRENCY_MONTHLY";
         LinkedHashMap<LocalDate, DigitalCurrency> result = requestApiData(function, symbol, market);
         return result;
     }
 
-    private LinkedHashMap<LocalDate, DigitalCurrency> requestApiData(String function, CryptoSymbol symbol, MarketList market) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException {
+    private LinkedHashMap<LocalDate, DigitalCurrency> requestApiData(String function, CryptoSymbol symbol, MarketList market) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&symbol=" + String.valueOf(symbol).replace("_", "") + "&market=" + market.toString() + "&apikey=" + apiKey + "&";
         JsonNode jsonNode = restTemplate.getForObject(queryString, JsonNode.class);
         Iterator<Map.Entry<String, JsonNode>> it = jsonNode.fields();
@@ -170,7 +170,7 @@ public class CryptoCurrencyTemplate implements ICryptoCurrencyService {
         return result;
     }
 
-    private Currency requestApiData(String fromCurrency, String toCurrency) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException {
+    private Currency requestApiData(String fromCurrency, String toCurrency) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String function = "CURRENCY_EXCHANGE_RATE";
         String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&from_currency=" + fromCurrency + "&to_currency=" + toCurrency + "&apikey=" + apiKey + "&";
         JsonNode jsonNode = restTemplate.getForObject(queryString, JsonNode.class);

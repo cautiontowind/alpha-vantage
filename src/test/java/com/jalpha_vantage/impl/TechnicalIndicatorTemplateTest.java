@@ -42,6 +42,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -65,6 +68,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -89,6 +95,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -112,6 +121,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -135,6 +147,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -158,7 +173,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
-        }
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");}
     }
 
     @Test
@@ -181,6 +198,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -206,6 +226,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -230,6 +253,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -253,6 +279,8 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
             ex4.printStackTrace();
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
         }
     }
 
@@ -280,6 +308,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -308,6 +339,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -335,6 +369,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -359,6 +396,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -387,6 +427,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -410,6 +453,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -433,6 +479,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -456,6 +505,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -484,6 +536,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -511,6 +566,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -534,6 +592,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -557,6 +618,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -580,7 +644,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
-        }
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");}
     }
 
     @Test
@@ -603,6 +669,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -627,6 +696,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -650,6 +722,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -674,7 +749,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
-        }
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");}
     }
 
     @Test
@@ -697,6 +774,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");
         }
     }
 
@@ -720,7 +800,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
-        }
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");}
     }
 
     @Test
@@ -743,7 +825,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
-        }
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");}
     }
 
 
@@ -772,7 +856,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
-        }
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");}
     }
 
     @Test
@@ -795,7 +881,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
-        }
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");}
     }
 
     @Test
@@ -818,7 +906,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
-        }
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");}
     }
 
     @Test
@@ -841,7 +931,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
-        }
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");}
     }
 
     @Test
@@ -864,7 +956,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
-        }
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");}
     }
 
     @Test
@@ -887,7 +981,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
-        }
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");}
     }
 
     @Test
@@ -914,7 +1010,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
-        }
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");}
     }
 
     @Test
@@ -937,7 +1035,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
-        }
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");}
     }
 
     @Test
@@ -960,7 +1060,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
-        }
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");}
     }
 
 
@@ -987,7 +1089,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
-        }
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");}
     }
 
     @Test
@@ -1010,7 +1114,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
-        }
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");}
     }
 
     @Test
@@ -1033,7 +1139,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
-        }
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");}
     }
 
 
@@ -1057,7 +1165,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
-        }
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");}
     }
 
     @Test
@@ -1080,7 +1190,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
-        }
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");}
     }
 
     @Test
@@ -1106,7 +1218,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
-        }
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");}
     }
 
     @Test
@@ -1129,7 +1243,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
-        }
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");}
     }
 
     @Test
@@ -1152,7 +1268,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
-        }
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");}
     }
 
     @Test
@@ -1175,7 +1293,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
-        }
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");}
     }
 
     @Test
@@ -1198,7 +1318,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
-        }
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");}
     }
 
     @Test
@@ -1221,7 +1343,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
-        }
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");}
     }
 
     @Test
@@ -1244,7 +1368,9 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
-        }
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");}
     }
 
 
@@ -1268,6 +1394,8 @@ public class TechnicalIndicatorTemplateTest extends AbstractServiceTest {
         } catch (UltraHighFrequencyRequestException ex5) {
             ex5.printStackTrace();
             fail("Ultra High Frequency Request Exception");
-        }
+        } catch (ApiLimitExceeded apiLimitExceeded) {
+            apiLimitExceeded.printStackTrace();
+            fail("Exceeded Api Limit");}
     }
 }
