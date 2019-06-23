@@ -68,7 +68,18 @@ public class CryptoCurrencyTemplate implements ICryptoCurrencyService {
     public LinkedHashMap<LocalDateTime, DigitalCurrency> intraday(CryptoSymbol symbol, MarketList market) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String function = "DIGITAL_CURRENCY_INTRADAY";
 
-        String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&symbol=" + String.valueOf(symbol).replace("_", "") + "&market=" + market.toString() + "&apikey=" + apiKey + "&";
+        //String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&symbol=" + String.valueOf(symbol).replace("_", "") + "&market=" + market.toString() + "&apikey=" + apiKey + "&";
+
+        String queryString = new StringBuilder()
+                .append("function=")
+                .append(function)
+                .append("&symbol=")
+                .append(String.valueOf(symbol).replace("_", ""))
+                .append("&market=")
+                .append(market.toString())
+                .append("&apikey=")
+                .append(apiKey).append("&").toString();
+
         JsonNode jsonNode = restTemplate.getForObject(queryString, JsonNode.class);
         Iterator<Map.Entry<String, JsonNode>> it = jsonNode.fields();
 
@@ -129,8 +140,20 @@ public class CryptoCurrencyTemplate implements ICryptoCurrencyService {
     }
 
     private LinkedHashMap<LocalDate, DigitalCurrency> requestApiData(String function, CryptoSymbol symbol, MarketList market) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
-        String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&symbol=" + String.valueOf(symbol).replace("_", "") + "&market=" + market.toString() + "&apikey=" + apiKey + "&";
-        JsonNode jsonNode = restTemplate.getForObject(queryString, JsonNode.class);
+//        String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&symbol=" + String.valueOf(symbol).replace("_", "") + "&market=" + market.toString() + "&apikey=" + apiKey + "&";
+        StringBuilder sb = new StringBuilder();
+        sb.append(ALPHA_VANTAGE_API_URL)
+                .append("function=")
+                .append(function)
+                .append("&symbol=")
+                .append(String.valueOf(symbol).replace("_", ""))
+                .append("&market=")
+                .append(market.toString())
+                .append("&apikey=")
+                .append(apiKey)
+                .append("&");
+
+        JsonNode jsonNode = restTemplate.getForObject(sb.toString(), JsonNode.class);
         Iterator<Map.Entry<String, JsonNode>> it = jsonNode.fields();
 
         LinkedHashMap<LocalDate, DigitalCurrency> result = new LinkedHashMap<>();
@@ -146,6 +169,7 @@ public class CryptoCurrencyTemplate implements ICryptoCurrencyService {
                 while (timeSeriesIter.hasNext()) {
                     Map.Entry<String, JsonNode> timeSeriesMap = timeSeriesIter.next();
                     LocalDate localDate = LocalDate.parse(timeSeriesMap.getKey(), DateTimeFormatter.ISO_LOCAL_DATE);
+
                     String open = String.valueOf(timeSeriesMap.getValue().get("1a. open (" + market + ")")).replaceAll("\"", "");
                     String usdOpen = String.valueOf(timeSeriesMap.getValue().get("1b. open (USD)")).replaceAll("\"", "");
 
@@ -172,8 +196,22 @@ public class CryptoCurrencyTemplate implements ICryptoCurrencyService {
 
     private Currency requestApiData(String fromCurrency, String toCurrency) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String function = "CURRENCY_EXCHANGE_RATE";
-        String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&from_currency=" + fromCurrency + "&to_currency=" + toCurrency + "&apikey=" + apiKey + "&";
-        JsonNode jsonNode = restTemplate.getForObject(queryString, JsonNode.class);
+//        String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&from_currency=" + fromCurrency + "&to_currency=" + toCurrency + "&apikey=" + apiKey + "&";
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(ALPHA_VANTAGE_API_URL)
+                .append("function=")
+                .append(function)
+                .append("&from_currency=")
+                .append(fromCurrency)
+                .append("&to_currency=")
+                .append(toCurrency)
+                .append("&apikey=")
+                .append(apiKey)
+                .append("&");
+
+
+        JsonNode jsonNode = restTemplate.getForObject(sb.toString(), JsonNode.class);
         Iterator<Map.Entry<String, JsonNode>> it = jsonNode.fields();
         while (it.hasNext()) {
             Map.Entry<String, JsonNode> mapEntry = it.next();

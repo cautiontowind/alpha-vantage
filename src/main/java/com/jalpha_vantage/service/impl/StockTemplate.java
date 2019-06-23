@@ -57,7 +57,17 @@ public class StockTemplate implements IStockService {
             UltraHighFrequencyRequestException,
             ApiLimitExceeded {
         String function = "TIME_SERIES_INTRADAY";
-        String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&symbol=" + symbol + "&apikey=" + apiKey + "&";
+//        String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&symbol=" + symbol + "&apikey=" + apiKey + "&";
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(ALPHA_VANTAGE_API_URL)
+                .append("function=")
+                .append(function)
+                .append("&symbol=")
+                .append(symbol)
+                .append("&apikey=")
+                .append(apiKey)
+                .append("&");
 
         String encodedUrl = options.keySet().stream().map(key -> {
             try {
@@ -66,7 +76,7 @@ public class StockTemplate implements IStockService {
                 e.printStackTrace();
             }
             return null;
-        }).collect(joining("&", queryString, ""));
+        }).collect(joining("&", sb.toString(), ""));
 
 
         LinkedHashMap<LocalDateTime, Stock> result = new LinkedHashMap<>();
@@ -98,7 +108,17 @@ public class StockTemplate implements IStockService {
     @Override
     public LinkedHashMap<LocalDate, Stock> daily(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String function = "TIME_SERIES_DAILY";
-        String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&symbol=" + symbol + "&apikey=" + apiKey + "&";
+//        String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&symbol=" + symbol + "&apikey=" + apiKey + "&";
+        StringBuilder sb = new StringBuilder();
+        sb.append(ALPHA_VANTAGE_API_URL)
+                .append("function=")
+                .append(function)
+                .append("&symbol=")
+                .append(symbol)
+                .append("&apikey=")
+                .append(apiKey)
+                .append("&");
+
         String encodedUrl = options.keySet().stream().map(key -> {
             try {
                 return key + "=" + UriUtils.encode(options.get(key), "UTF-8");
@@ -106,7 +126,7 @@ public class StockTemplate implements IStockService {
                 e.printStackTrace();
             }
             return null;
-        }).collect(joining("&", queryString, ""));
+        }).collect(joining("&", sb.toString(), ""));
 
         LinkedHashMap<LocalDate, Stock> result = new LinkedHashMap<>();
         JsonNode jsonNode = restTemplate.getForObject(encodedUrl, JsonNode.class);
@@ -135,7 +155,17 @@ public class StockTemplate implements IStockService {
     @Override
     public LinkedHashMap<LocalDate, Stock> dailyAdjustedClose(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String function = "TIME_SERIES_DAILY_ADJUSTED";
-        String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&symbol=" + symbol + "&apikey=" + apiKey + "&";
+        //String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&symbol=" + symbol + "&apikey=" + apiKey + "&";
+        StringBuilder sb = new StringBuilder();
+        sb.append(ALPHA_VANTAGE_API_URL)
+                .append("function=")
+                .append(function)
+                .append("&symbol=")
+                .append(symbol)
+                .append("&apikey=")
+                .append(apiKey)
+                .append("&");
+
         String encodedUrl = options.keySet().stream().map(key -> {
             try {
                 return key + "=" + UriUtils.encode(options.get(key), "UTF-8");
@@ -143,7 +173,7 @@ public class StockTemplate implements IStockService {
                 e.printStackTrace();
             }
             return null;
-        }).collect(joining("&", queryString, ""));
+        }).collect(joining("&", sb.toString(), ""));
 
         LinkedHashMap<LocalDate, Stock> result = new LinkedHashMap<>();
         JsonNode jsonNode = restTemplate.getForObject(encodedUrl, JsonNode.class);
@@ -179,7 +209,18 @@ public class StockTemplate implements IStockService {
     @Override
     public LinkedHashMap<LocalDate, Stock> weekly(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String function = "TIME_SERIES_WEEKLY";
-        String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&symbol=" + symbol + "&apikey=" + apiKey + "&";
+//        String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&symbol=" + symbol + "&apikey=" + apiKey + "&";
+        StringBuilder sb = new StringBuilder();
+        sb.append(ALPHA_VANTAGE_API_URL)
+                .append("function=")
+                .append(function)
+                .append("&symbol=")
+                .append(symbol)
+                .append("&apikey=")
+                .append(apiKey)
+                .append("&");
+
+
         String encodedUrl = options.keySet().stream().map(key -> {
             try {
                 return key + "=" + UriUtils.encode(options.get(key), "UTF-8");
@@ -187,7 +228,7 @@ public class StockTemplate implements IStockService {
                 e.printStackTrace();
             }
             return null;
-        }).collect(joining("&", queryString, ""));
+        }).collect(joining("&", sb.toString(), ""));
 
         LinkedHashMap<LocalDate, Stock> result = new LinkedHashMap<>();
         JsonNode jsonNode = restTemplate.getForObject(encodedUrl, JsonNode.class);
@@ -214,7 +255,18 @@ public class StockTemplate implements IStockService {
 
     public LinkedHashMap<LocalDate, Stock> weeklyAdjusted(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String function = "TIME_SERIES_WEEKLY_ADJUSTED";
-        String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&symbol=" + symbol + "&apikey=" + apiKey + "&";
+//        String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&symbol=" + symbol + "&apikey=" + apiKey + "&";
+        StringBuilder sb = new StringBuilder();
+        sb.append(ALPHA_VANTAGE_API_URL)
+                .append("function=")
+                .append(function)
+                .append("&symbol=")
+                .append(symbol)
+                .append("&apikey=")
+                .append(apiKey)
+                .append("&");
+
+
         String encodedUrl = options.keySet().stream().map(key -> {
             try {
                 return key + "=" + UriUtils.encode(options.get(key), "UTF-8");
@@ -222,7 +274,7 @@ public class StockTemplate implements IStockService {
                 e.printStackTrace();
             }
             return null;
-        }).collect(joining("&", queryString, ""));
+        }).collect(joining("&", sb.toString(), ""));
 
         LinkedHashMap<LocalDate, Stock> result = new LinkedHashMap<>();
         JsonNode jsonNode = restTemplate.getForObject(encodedUrl, JsonNode.class);
@@ -250,7 +302,18 @@ public class StockTemplate implements IStockService {
     @Override
     public LinkedHashMap<LocalDate, Stock> monthly(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String function = "TIME_SERIES_MONTHLY";
-        String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&symbol=" + symbol + "&apikey=" + apiKey + "&";
+//        String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&symbol=" + symbol + "&apikey=" + apiKey + "&";
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(ALPHA_VANTAGE_API_URL)
+                .append("function=")
+                .append(function)
+                .append("&symbol=")
+                .append(symbol)
+                .append("&apikey=")
+                .append(apiKey)
+                .append("&");
+
         String encodedUrl = options.keySet().stream().map(key -> {
             try {
                 return key + "=" + UriUtils.encode(options.get(key), "UTF-8");
@@ -258,7 +321,7 @@ public class StockTemplate implements IStockService {
                 e.printStackTrace();
             }
             return null;
-        }).collect(joining("&", queryString, ""));
+        }).collect(joining("&", sb.toString(), ""));
 
         LinkedHashMap<LocalDate, Stock> result = new LinkedHashMap<>();
         JsonNode jsonNode = restTemplate.getForObject(encodedUrl, JsonNode.class);
@@ -285,7 +348,17 @@ public class StockTemplate implements IStockService {
 
     public LinkedHashMap<LocalDate, Stock> monthlyAdjusted(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String function = "TIME_SERIES_MONTHLY_ADJUSTED";
-        String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&symbol=" + symbol + "&apikey=" + apiKey + "&";
+//        String queryString = ALPHA_VANTAGE_API_URL + "function=" + function + "&symbol=" + symbol + "&apikey=" + apiKey + "&";
+        StringBuilder sb = new StringBuilder();
+        sb.append(ALPHA_VANTAGE_API_URL)
+                .append("function=")
+                .append(function)
+                .append("&symbol=")
+                .append(symbol)
+                .append("&apikey=")
+                .append(apiKey)
+                .append("&");
+
         String encodedUrl = options.keySet().stream().map(key -> {
             try {
                 return key + "=" + UriUtils.encode(options.get(key), "UTF-8");
@@ -293,7 +366,7 @@ public class StockTemplate implements IStockService {
                 e.printStackTrace();
             }
             return null;
-        }).collect(joining("&", queryString, ""));
+        }).collect(joining("&", sb.toString(), ""));
 
         LinkedHashMap<LocalDate, Stock> result = new LinkedHashMap<>();
         JsonNode jsonNode = restTemplate.getForObject(encodedUrl, JsonNode.class);

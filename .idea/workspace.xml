@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="fbfa8a57-813b-42ad-a641-6dcd79f56504" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/CryptoCurrencyTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/CryptoCurrencyTemplate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/StockTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/StockTemplate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/TechnicalIndicatorTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/TechnicalIndicatorTemplate.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,103 +15,30 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/exception/InvalidApiKeyException.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-              <folding>
-                <element signature="e#143#144#0" expanded="true" />
-                <element signature="e#171#172#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/util/ExceptionUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="172" selection-start-line="16" selection-start-column="172" selection-end-line="16" selection-end-column="172" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/exception/UltraHighFrequencyRequestException.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-              <folding>
-                <element signature="e#167#168#0" expanded="true" />
-                <element signature="e#190#191#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/exception/MissingApiKeyException.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-              <folding>
-                <element signature="e#143#144#0" expanded="true" />
-                <element signature="e#166#167#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/StockTemplate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="72" column="82" selection-start-line="72" selection-start-column="82" selection-end-line="72" selection-end-column="82" />
+            <state relative-caret-position="314">
+              <caret line="368" column="45" selection-start-line="368" selection-start-column="45" selection-end-line="368" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/exception/ApiLimitExceeded.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/TechnicalIndicatorTemplate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
-              <folding>
-                <element signature="e#130#131#0" expanded="true" />
-                <element signature="e#158#159#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="16995">
+              <caret line="1154" column="45" selection-start-line="1154" selection-start-column="45" selection-end-line="1154" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/CryptoCurrencyTemplate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/IStockService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="16" column="90" selection-start-line="16" selection-start-column="90" selection-end-line="16" selection-end-column="90" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/ITechnicalIndicatorService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="84" column="286" selection-start-line="84" selection-start-column="286" selection-end-line="84" selection-end-column="286" />
+            <state relative-caret-position="2910">
+              <caret line="213" column="67" selection-start-line="213" selection-start-column="67" selection-end-line="213" selection-end-column="67" />
             </state>
           </provider>
         </entry>
@@ -127,6 +56,7 @@
     <findStrings>
       <find>daily</find>
       <find>&quot;\&quot;</find>
+      <find>jackson-databind</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src/main/java</dir>
@@ -140,14 +70,11 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/exception/MissingApiKeyException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/ITechnicalIndicatorService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/TechnicalIndicatorTemplate.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/ICryptoCurrencyService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/CryptoCurrencyTemplate.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/jalpha_vantage/impl/StockTemplateTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/jalpha_vantage/impl/TechnicalIndicatorTemplateTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/jalpha_vantage/impl/CrypoCurrencyTypeTemplateTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/IStockService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/StockTemplate.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/jalpha_vantage/test/AbstractServiceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/exception/ApiLimitExceeded.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/exception/InvalidApiKeyException.java" />
@@ -155,6 +82,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/util/ExceptionUtil.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/jalpha_vantage/enums/Tester.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/domain/Stock.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/TechnicalIndicatorTemplate.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/StockTemplate.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/CryptoCurrencyTemplate.java" />
       </list>
     </option>
   </component>
@@ -176,6 +107,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -209,76 +142,19 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="jalpha_vantage" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="jalpha-vantage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alpha-vantage" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="jalpha_vantage" type="462c0819:PsiDirectoryNode" />
-              <item name="exception" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jalpha-vantage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alpha-vantage" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="jalpha_vantage" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jalpha-vantage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alpha-vantage" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jalpha-vantage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alpha-vantage" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jalpha-vantage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alpha-vantage" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="jalpha_vantage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jalpha-vantage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alpha-vantage" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="jalpha_vantage" type="462c0819:PsiDirectoryNode" />
-              <item name="enums" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jalpha-vantage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alpha-vantage" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="jalpha_vantage" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544903990717" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544904282703" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -328,18 +204,18 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1544890453481</updated>
-      <workItem from="1544890456919" duration="9696000" />
+      <workItem from="1544890456919" duration="10031000" />
+      <workItem from="1561310214897" duration="3211000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9696000" />
+    <option name="totallyTimeSpent" value="13242000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25274727" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25579977" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Build Variants" order="3" side_tool="true" />
@@ -360,7 +236,7 @@
       <window_info anchor="bottom" id="TODO" order="9" />
       <window_info anchor="bottom" id="Dart Analysis" order="10" />
       <window_info anchor="bottom" id="Android Profiler" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="12" visible="true" weight="0.32941177" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.32941177" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
       <window_info anchor="bottom" id="Logcat" order="14" />
       <window_info anchor="bottom" id="Version Control" order="15" />
@@ -426,20 +302,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/ITechnicalIndicatorService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="84" column="286" selection-start-line="84" selection-start-column="286" selection-end-line="84" selection-end-column="286" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/TechnicalIndicatorTemplate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="481" column="293" selection-start-line="481" selection-start-column="293" selection-end-line="481" selection-end-column="293" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/IServiceProvider.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -451,13 +313,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="30" column="294" selection-start-line="30" selection-start-column="294" selection-end-line="30" selection-end-column="294" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/CryptoCurrencyTemplate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="172" column="276" selection-start-line="172" selection-start-column="276" selection-end-line="172" selection-end-column="276" />
         </state>
       </provider>
     </entry>
@@ -485,24 +340,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/exception/MissingApiKeyException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#143#144#0" expanded="true" />
-            <element signature="e#166#167#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/IStockService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="16" column="90" selection-start-line="16" selection-start-column="90" selection-end-line="16" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/jalpha_vantage/test/AbstractServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -510,52 +347,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/exception/InvalidApiKeyException.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/jalpha_vantage/enums/Tester.java" />
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-          <folding>
-            <element signature="e#143#144#0" expanded="true" />
-            <element signature="e#171#172#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/exception/UltraHighFrequencyRequestException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-          <folding>
-            <element signature="e#167#168#0" expanded="true" />
-            <element signature="e#190#191#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/StockTemplate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="72" column="82" selection-start-line="72" selection-start-column="82" selection-end-line="72" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/util/ExceptionUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="172" selection-start-line="16" selection-start-column="172" selection-end-line="16" selection-end-column="172" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/jalpha_vantage/enums/Tester.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" lean-forward="true" selection-end-line="29" />
-          <folding>
-            <element signature="e#0#957#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="476">
+          <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -570,10 +366,102 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/exception/InvalidApiKeyException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
+        <state relative-caret-position="45">
+          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+          <folding>
+            <element signature="e#143#144#0" expanded="true" />
+            <element signature="e#171#172#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/util/ExceptionUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="16" column="172" selection-start-line="16" selection-start-column="172" selection-end-line="16" selection-end-column="172" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/exception/UltraHighFrequencyRequestException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+          <folding>
+            <element signature="e#167#168#0" expanded="true" />
+            <element signature="e#195#196#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/exception/MissingApiKeyException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="e#143#144#0" expanded="true" />
+            <element signature="e#171#172#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/ServiceProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/ITechnicalIndicatorService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1125">
+          <caret line="84" column="286" selection-start-line="84" selection-start-column="286" selection-end-line="84" selection-end-column="286" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/IStockService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="16" column="90" selection-start-line="16" selection-start-column="90" selection-end-line="16" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/domain/Stock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/config/AppConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/StockTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="368" column="45" selection-start-line="368" selection-start-column="45" selection-end-line="368" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/TechnicalIndicatorTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16995">
+          <caret line="1154" column="45" selection-start-line="1154" selection-start-column="45" selection-end-line="1154" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jalpha_vantage/service/impl/CryptoCurrencyTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2910">
+          <caret line="213" column="67" selection-start-line="213" selection-start-column="67" selection-end-line="213" selection-end-column="67" />
         </state>
       </provider>
     </entry>
