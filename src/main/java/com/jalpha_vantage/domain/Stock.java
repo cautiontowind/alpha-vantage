@@ -1,135 +1,49 @@
 package com.jalpha_vantage.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-public class Stock implements Serializable {
-    private String symbol;
-    private String open;
-    private String high;
-    private String low;
-    private String close;
-    private String volume;
+@Getter
+@Setter
+@ToString
+public abstract class Stock implements Serializable {
+    protected String symbol;
+    protected String open;
+    protected String high;
+    protected String low;
+    protected String close;
+    protected String volume;
 
-    private String adjustedClose;
-    private String dividendAmount;
-    private String splitCoefficient;
+    protected String adjustedClose;
+    protected String dividendAmount;
+    protected String splitCoefficient;
+
+    protected Stock(){}
 
 
-    private Stock(String symbol, String open, String high, String low, String close, String volume) {
-        this.symbol = symbol;
-        this.open = open;
-        this.high = high;
-        this.low = low;
-        this.close = close;
-        this.volume = volume;
+
+
+    public static DailyStock daily(String symbol, String open, String high, String low, String close, String volume, LocalDate date) {
+        return new DailyStock(symbol, open, high, low, close, volume, date);
+    }
+
+    public static DailyStock daily(String name, String symbol, String open, String high, String low, String close, String volume, String adjustedClose, String dividendAmount, String splitCoefficient, LocalDate date) {
+        return new DailyStock(name, symbol, open, high, low, close, volume, adjustedClose, dividendAmount, splitCoefficient, date);
     }
 
 
-    private Stock(String name, String symbol, String open, String high, String low, String close, String volume, String adjustedClose, String dividendAmount, String splitCoefficient) {
-        this.symbol = symbol;
-        this.open = open;
-        this.high = high;
-        this.low = low;
-        this.close = close;
-        this.volume = volume;
-        this.adjustedClose = adjustedClose;
-        this.dividendAmount = dividendAmount;
-        this.splitCoefficient = splitCoefficient;
+    public static IntraStock intraDay(String symbol, String open, String high, String low, String close, String volume, LocalDateTime date) {
+        return new IntraStock(symbol, open, high, low, close, volume, date);
     }
 
-    public static Stock newStpckInstance(String symbol, String open, String high, String low, String close, String volume) {
-        return new Stock(symbol, open, high, low, close, volume);
+    public static IntraStock intraDay(String name, String symbol, String open, String high, String low, String close, String volume, String adjustedClose, String dividendAmount, String splitCoefficient, LocalDateTime date) {
+        return new IntraStock(name, symbol, open, high, low, close, volume, adjustedClose, dividendAmount, splitCoefficient, date);
     }
 
-    public static Stock newStpckInstance(String name, String symbol, String open, String high, String low, String close, String volume, String adjustedClose, String dividendAmount, String splitCoefficient) {
-        return new Stock(name, symbol, open, high, low, close, volume, adjustedClose, dividendAmount, splitCoefficient);
-    }
 
-    public String getSymbol() {
-        return symbol;
-    }
-
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
-    }
-
-    public String getOpen() {
-        return open;
-    }
-
-    public void setOpen(String open) {
-        this.open = open;
-    }
-
-    public String getHigh() {
-        return high;
-    }
-
-    public void setHigh(String high) {
-        this.high = high;
-    }
-
-    public String getClose() {
-        return close;
-    }
-
-    public void setClose(String close) {
-        this.close = close;
-    }
-
-    public String getVolume() {
-        return volume;
-    }
-
-    public void setVolume(String volume) {
-        this.volume = volume;
-    }
-
-    public String getAdjustedClose() {
-        return adjustedClose;
-    }
-
-    public void setAdjustedClose(String adjustedClose) {
-        this.adjustedClose = adjustedClose;
-    }
-
-    public String getDividendAmount() {
-        return dividendAmount;
-    }
-
-    public void setDividendAmount(String dividendAmount) {
-        this.dividendAmount = dividendAmount;
-    }
-
-    public String getSplitCoefficient() {
-        return splitCoefficient;
-    }
-
-    public void setSplitCoefficient(String splitCoefficient) {
-        this.splitCoefficient = splitCoefficient;
-    }
-
-    public String getLow() {
-        return low;
-    }
-
-    public void setLow(String low) {
-        this.low = low;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Symbol: ").append(symbol).append(", ");
-        sb.append("High: ").append(high).append(", ");
-        sb.append("Open: ").append(open).append(", ");
-        sb.append("Low: ").append(low).append(", ");
-        sb.append("Close: ").append(close).append(", ");
-        sb.append("Open: ").append(open).append(", ");
-        sb.append("Volume: ").append(volume).append(", ");
-        sb.append("Adjusted Close: ").append(adjustedClose).append(", ");
-        sb.append("Dividend Amount: ").append(dividendAmount).append(", ");
-        sb.append("Split Coefficient: ").append(splitCoefficient);
-        return sb.toString();
-    }
 }

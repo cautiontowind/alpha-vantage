@@ -1,52 +1,31 @@
 package com.jalpha_vantage.domain;
 
 import com.jalpha_vantage.enums.IndicatorType;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
+import java.time.LocalDate;
+
+@Getter
+@Setter
+@ToString
 public class AbstractIndicator {
     private String symbol;
     private IndicatorType indicatorType;
     private String value;
+    private LocalDate date;
 
-    protected AbstractIndicator(String symbol, IndicatorType indicatorType, String value) {
+    protected AbstractIndicator(String symbol, IndicatorType indicatorType, String value, LocalDate date) {
         this.symbol = symbol;
         this.indicatorType = indicatorType;
         this.value = value;
+        this.date = date;
     }
 
-    public static AbstractIndicator newInstance(String symbol, IndicatorType indicatorType, String value) {
-        return new AbstractIndicator(symbol, indicatorType, value);
+    public static AbstractIndicator newInstance(String symbol, IndicatorType indicatorType, String value, LocalDate date) {
+        return new AbstractIndicator(symbol, indicatorType, value, date);
     }
 
-    public String getSymbol() {
-        return symbol;
-    }
 
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
-    }
-
-    public IndicatorType getIndicatorType() {
-        return indicatorType;
-    }
-
-    public void setIndicatorType(IndicatorType indicatorType) {
-        this.indicatorType = indicatorType;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Symbol: ").append(symbol).append(", ").append(", ")
-                .append("Value: ").append(value).append(", ")
-                .append("Technical Indicator: ").append(indicatorType.name());
-        return sb.toString();
-    }
 }
