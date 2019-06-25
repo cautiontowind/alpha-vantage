@@ -14,6 +14,7 @@ import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.fail;
@@ -54,7 +55,7 @@ public class CrypoCurrencyTypeTemplateTest extends AbstractServiceTest {
     @Test
     public void testIntraDay() {
         try {
-            LinkedHashMap<LocalDateTime, DigitalCurrency> values = cryptoCurrencyOperation.intraday(CryptoSymbol.BTC, MarketList.CNY);
+            List<DigitalCurrency> values = cryptoCurrencyOperation.intraday(CryptoSymbol.BTC, MarketList.CNY);
             assertEquals(922, values.size());
         } catch (UnsupportedEncodingException ex) {
             ex.printStackTrace();
@@ -82,7 +83,7 @@ public class CrypoCurrencyTypeTemplateTest extends AbstractServiceTest {
     @Test
     public void tesDaily() {
         try {
-            LinkedHashMap<LocalDate, DigitalCurrency> values = cryptoCurrencyOperation.daily(CryptoSymbol.BTC, MarketList.CNY);
+            List<DigitalCurrency> values = cryptoCurrencyOperation.daily(CryptoSymbol.BTC, MarketList.CNY);
             assertEquals(1292, values.size());
         } catch (UnsupportedEncodingException ex) {
             ex.printStackTrace();
@@ -111,7 +112,7 @@ public class CrypoCurrencyTypeTemplateTest extends AbstractServiceTest {
     @Test
     public void testWeekly() {
         try {
-            LinkedHashMap<LocalDate, DigitalCurrency> values = cryptoCurrencyOperation.weekly(CryptoSymbol.BTC, MarketList.CNY);
+            List<DigitalCurrency> values = cryptoCurrencyOperation.weekly(CryptoSymbol.BTC, MarketList.CNY);
             assertEquals(184, values.size());
         } catch (UnsupportedEncodingException ex) {
             ex.printStackTrace();
@@ -139,7 +140,7 @@ public class CrypoCurrencyTypeTemplateTest extends AbstractServiceTest {
     @Test
     public void testMonthly() {
         try {
-            LinkedHashMap<LocalDate, DigitalCurrency> values = cryptoCurrencyOperation.monthly(CryptoSymbol.BTC, MarketList.CNY);
+            List<DigitalCurrency> values = cryptoCurrencyOperation.monthly(CryptoSymbol.BTC, MarketList.CNY);
             assertEquals(42, values.size());
         } catch (UnsupportedEncodingException ex) {
             ex.printStackTrace();

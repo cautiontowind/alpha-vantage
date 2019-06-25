@@ -1,50 +1,30 @@
 package com.jalpha_vantage.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+import java.time.LocalDate;
+
+@Getter
+@Setter
+@ToString
 public class StochfIndicator {
     private String symbol;
     private String fastK;
     private String fastD;
+    private LocalDate date;
 
-    protected StochfIndicator(String symbol, String fastK, String fastD) {
+    protected StochfIndicator(String symbol, String fastK, String fastD, LocalDate date) {
         this.symbol = symbol;
         this.fastK = fastK;
         this.fastD = fastD;
+        this.date = date;
     }
 
-    public static StochfIndicator newInstance(String symbol, String fastK, String fastD) {
-        return new StochfIndicator(symbol, fastK, fastD);
+    public static StochfIndicator newInstance(String symbol, String fastK, String fastD, LocalDate date) {
+        return new StochfIndicator(symbol, fastK, fastD, date);
     }
 
-    public String getSymbol() {
-        return symbol;
-    }
 
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
-    }
-
-    public String getFastK() {
-        return fastK;
-    }
-
-    public void setFastK(String fastK) {
-        this.fastK = fastK;
-    }
-
-    public String getFastD() {
-        return fastD;
-    }
-
-    public void setFastD(String fastD) {
-        this.fastD = fastD;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Symbol: ").append(getSymbol()).append(", ").append(", ")
-                .append("FlastK: ").append(getFastK()).append(", ")
-                .append("FastD: ").append(fastD);
-        return sb.toString();
-    }
 }
