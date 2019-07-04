@@ -1,6 +1,8 @@
 package com.jalpha_vantage.service.impl;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.jalpha_vantage.domain.DailyStock;
+import com.jalpha_vantage.domain.IntraStock;
 import com.jalpha_vantage.domain.Stock;
 import com.jalpha_vantage.exception.*;
 import com.jalpha_vantage.service.IStockService;
@@ -9,6 +11,7 @@ import com.jalpha_vantage.util.Utils;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -21,8 +24,7 @@ public class StockTemplate implements IStockService {
 
     private final RestTemplate restTemplate;
 
-
-    private static String apiKey;
+    private final String apiKey;
 
     //@Autowired
     public StockTemplate(RestTemplate restTemplate, String apiKey) {
@@ -31,7 +33,7 @@ public class StockTemplate implements IStockService {
     }
 
     @Override
-    public List<Stock> intraDay(String symbol, HashMap<String, String> options)
+    public List<IntraStock> intraDay(String symbol, Map<String, String> options)
             throws InvalidApiKeyException,
             InvalidFunctionOptionException,
             MalFormattedFunctionException,
@@ -60,7 +62,7 @@ public class StockTemplate implements IStockService {
         }).collect(joining("&", sb.toString(), ""));
 
 
-        List<Stock> result = new ArrayList<>();
+        List<IntraStock> result = new ArrayList<>();
 
         JsonNode jsonNode = restTemplate.getForObject(encodedUrl, JsonNode.class);
         Iterator<Map.Entry<String, JsonNode>> it = jsonNode.fields();
@@ -75,7 +77,7 @@ public class StockTemplate implements IStockService {
                     Map.Entry<String, JsonNode> timeSeriesMap = timeSeriesIter.next();
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                     LocalDateTime dateTime = LocalDateTime.parse(timeSeriesMap.getKey(), formatter);
-                    Stock stock = intraStock(symbol, timeSeriesMap, dateTime);
+                    IntraStock stock = intraStock(symbol, timeSeriesMap, dateTime);
                     result.add(stock);
                 }
 
@@ -88,7 +90,7 @@ public class StockTemplate implements IStockService {
 
 
     @Override
-    public List<Stock> daily(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
+    public List<DailyStock> daily(String symbol, Map<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String function = "TIME_SERIES_DAILY";
         StringBuilder sb = new StringBuilder();
         sb.append(Utils.BASE_URI)
@@ -108,7 +110,7 @@ public class StockTemplate implements IStockService {
             }
             return null;
         }).collect(joining("&", sb.toString(), ""));
-        List<Stock> result = new ArrayList<>();
+        List<DailyStock> result = new ArrayList<>();
         JsonNode jsonNode = restTemplate.getForObject(encodedUrl, JsonNode.class);
         Iterator<Map.Entry<String, JsonNode>> it = jsonNode.fields();
         while (it.hasNext()) {
@@ -120,7 +122,7 @@ public class StockTemplate implements IStockService {
                 while (timeSeriesIter.hasNext()) {
                     Map.Entry<String, JsonNode> timeSeriesMap = timeSeriesIter.next();
                     LocalDate localDate = LocalDate.parse(timeSeriesMap.getKey(), DateTimeFormatter.ISO_LOCAL_DATE);
-                    Stock stock = dailyStock(symbol, timeSeriesMap,localDate);
+                    DailyStock stock = dailyStock(symbol, timeSeriesMap,localDate);
                     result.add(stock);
                 }
 
@@ -133,7 +135,7 @@ public class StockTemplate implements IStockService {
 
 
     @Override
-    public List<Stock> dailyAdjustedClose(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
+    public List<DailyStock> dailyAdjustedClose(String symbol, Map<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String function = "TIME_SERIES_DAILY_ADJUSTED";
         StringBuilder sb = new StringBuilder();
         sb.append(Utils.BASE_URI)
@@ -155,7 +157,7 @@ public class StockTemplate implements IStockService {
         }).collect(joining("&", sb.toString(), ""));
 
 
-        List<Stock> result = new ArrayList<>();
+        List<DailyStock> result = new ArrayList<>();
         JsonNode jsonNode = restTemplate.getForObject(encodedUrl, JsonNode.class);
         Iterator<Map.Entry<String, JsonNode>> it = jsonNode.fields();
         while (it.hasNext()) {
@@ -167,14 +169,14 @@ public class StockTemplate implements IStockService {
                 while (timeSeriesIter.hasNext()) {
                     Map.Entry<String, JsonNode> timeSeriesMap = timeSeriesIter.next();
                     LocalDate localDate = LocalDate.parse(timeSeriesMap.getKey(), DateTimeFormatter.ISO_LOCAL_DATE);
-                    String open = String.valueOf(timeSeriesMap.getValue().get("1. open")).replaceAll("\"", "");
-                    String high = String.valueOf(timeSeriesMap.getValue().get("2. high")).replaceAll("\"", "");
-                    String low = String.valueOf(timeSeriesMap.getValue().get("3. low")).replaceAll("\"", "");
-                    String close = String.valueOf(timeSeriesMap.getValue().get("4. close")).replaceAll("\"", "");
-                    String adjustedClose = String.valueOf(timeSeriesMap.getValue().get("5. adjusted close")).replaceAll("\"", "");
-                    String volume = String.valueOf(timeSeriesMap.getValue().get("6. volume")).replaceAll("\"", "");
-                    String dividendAmount = String.valueOf(timeSeriesMap.getValue().get("7. dividend amount")).replaceAll("\"", "");
-                    String splitCoefficient = String.valueOf(timeSeriesMap.getValue().get("8. split coefficient")).replaceAll("\"", "");
+                    double open = Double.valueOf(timeSeriesMap.getValue().get("1. open").toString().replaceAll("\"", "").trim());
+                    double high = Double.valueOf(timeSeriesMap.getValue().get("2. high").toString().replaceAll("\"", "").trim());
+                    double low = Double.valueOf(timeSeriesMap.getValue().get("3. low").toString().replaceAll("\"", "").trim());
+                    double close = Double.valueOf(timeSeriesMap.getValue().get("4. close").toString().replaceAll("\"", "").trim());
+                    double adjustedClose = Double.valueOf(timeSeriesMap.getValue().get("5. adjusted close").toString().replaceAll("\"", "").trim());
+                    BigDecimal volume = new BigDecimal(timeSeriesMap.getValue().get("6. volume").toString().replaceAll("\"", "").trim());
+                    double dividendAmount = Double.valueOf(timeSeriesMap.getValue().get("7. dividend amount").toString().replaceAll("\"", ""));
+                    double splitCoefficient = Double.valueOf(timeSeriesMap.getValue().get("8. split coefficient").toString().replaceAll("\"", ""));
 
                     result.add(Stock.daily("", symbol, open, high, low, close, volume, adjustedClose, dividendAmount, splitCoefficient, localDate));
                 }
@@ -187,7 +189,7 @@ public class StockTemplate implements IStockService {
 
 
     @Override
-    public List<Stock> weekly(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
+    public List<DailyStock> weekly(String symbol, Map<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String function = "TIME_SERIES_WEEKLY";
         StringBuilder sb = new StringBuilder();
         sb.append(Utils.BASE_URI)
@@ -209,7 +211,7 @@ public class StockTemplate implements IStockService {
             return null;
         }).collect(joining("&", sb.toString(), ""));
 
-        List<Stock> result = new ArrayList<>();
+        List<DailyStock> result = new ArrayList<>();
         JsonNode jsonNode = restTemplate.getForObject(encodedUrl, JsonNode.class);
         Iterator<Map.Entry<String, JsonNode>> it = jsonNode.fields();
         while (it.hasNext()) {
@@ -221,7 +223,7 @@ public class StockTemplate implements IStockService {
                 while (timeSeriesIter.hasNext()) {
                     Map.Entry<String, JsonNode> timeSeriesMap = timeSeriesIter.next();
                     LocalDate localDate = LocalDate.parse(timeSeriesMap.getKey(), DateTimeFormatter.ISO_LOCAL_DATE);
-                    Stock stock = dailyStock(symbol, timeSeriesMap, localDate);
+                    DailyStock stock = dailyStock(symbol, timeSeriesMap, localDate);
                     result.add(stock);
                 }
 
@@ -232,7 +234,7 @@ public class StockTemplate implements IStockService {
 
 
 
-    public List<Stock> weeklyAdjusted(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
+    public List<DailyStock> weeklyAdjusted(String symbol, Map<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String function = "TIME_SERIES_WEEKLY_ADJUSTED";
         StringBuilder sb = new StringBuilder();
         sb.append(Utils.BASE_URI)
@@ -254,7 +256,7 @@ public class StockTemplate implements IStockService {
             return null;
         }).collect(joining("&", sb.toString(), ""));
 
-        List<Stock> result = new ArrayList<>();
+        List<DailyStock> result = new ArrayList<>();
         JsonNode jsonNode = restTemplate.getForObject(encodedUrl, JsonNode.class);
         Iterator<Map.Entry<String, JsonNode>> it = jsonNode.fields();
         while (it.hasNext()) {
@@ -266,7 +268,7 @@ public class StockTemplate implements IStockService {
                 while (timeSeriesIter.hasNext()) {
                     Map.Entry<String, JsonNode> timeSeriesMap = timeSeriesIter.next();
                     LocalDate localDate = LocalDate.parse(timeSeriesMap.getKey(), DateTimeFormatter.ISO_LOCAL_DATE);
-                    Stock stock = dailyStock(symbol, timeSeriesMap, localDate);
+                    DailyStock stock = dailyStock(symbol, timeSeriesMap, localDate);
                     result.add(stock);
                 }
 
@@ -278,7 +280,7 @@ public class StockTemplate implements IStockService {
 
 
     @Override
-    public List<Stock> monthly(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
+    public List<DailyStock> monthly(String symbol, Map<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String function = "TIME_SERIES_MONTHLY";
         StringBuilder sb = new StringBuilder();
         sb.append(Utils.BASE_URI)
@@ -299,7 +301,7 @@ public class StockTemplate implements IStockService {
             return null;
         }).collect(joining("&", sb.toString(), ""));
 
-        List<Stock> result = new ArrayList<>();;
+        List<DailyStock> result = new ArrayList<>();;
         JsonNode jsonNode = restTemplate.getForObject(encodedUrl, JsonNode.class);
         Iterator<Map.Entry<String, JsonNode>> it = jsonNode.fields();
         while (it.hasNext()) {
@@ -311,7 +313,7 @@ public class StockTemplate implements IStockService {
                 while (timeSeriesIter.hasNext()) {
                     Map.Entry<String, JsonNode> timeSeriesMap = timeSeriesIter.next();
                     LocalDate localDate = LocalDate.parse(timeSeriesMap.getKey(), DateTimeFormatter.ISO_LOCAL_DATE);
-                    Stock stock = dailyStock(symbol, timeSeriesMap, localDate);
+                    DailyStock stock = dailyStock(symbol, timeSeriesMap, localDate);
                     result.add(stock);
                 }
 
@@ -322,7 +324,7 @@ public class StockTemplate implements IStockService {
 
 
 
-    public List<Stock> monthlyAdjusted(String symbol, HashMap<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
+    public List<DailyStock> monthlyAdjusted(String symbol, Map<String, String> options) throws UnsupportedEncodingException, InvalidApiKeyException, InvalidFunctionOptionException, MalFormattedFunctionException, MissingApiKeyException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String function = "TIME_SERIES_MONTHLY_ADJUSTED";
         StringBuilder sb = new StringBuilder();
         sb.append(Utils.BASE_URI)
@@ -343,7 +345,7 @@ public class StockTemplate implements IStockService {
             return null;
         }).collect(joining("&", sb.toString(), ""));
 
-        List<Stock> result = new ArrayList<>();
+        List<DailyStock> result = new ArrayList<>();
         JsonNode jsonNode = restTemplate.getForObject(encodedUrl, JsonNode.class);
         Iterator<Map.Entry<String, JsonNode>> it = jsonNode.fields();
         while (it.hasNext()) {
@@ -355,7 +357,7 @@ public class StockTemplate implements IStockService {
                 while (timeSeriesIter.hasNext()) {
                     Map.Entry<String, JsonNode> timeSeriesMap = timeSeriesIter.next();
                     LocalDate localDate = LocalDate.parse(timeSeriesMap.getKey(), DateTimeFormatter.ISO_LOCAL_DATE);
-                    Stock stock = dailyStock(symbol, timeSeriesMap, localDate);
+                    DailyStock stock = dailyStock(symbol, timeSeriesMap, localDate);
                     result.add(stock);
                 }
 
@@ -364,22 +366,22 @@ public class StockTemplate implements IStockService {
         return result;
     }
 
-    Stock intraStock(String symbol, Map.Entry<String, JsonNode> seriesMap, LocalDateTime date){
-        String open = String.valueOf(seriesMap.getValue().get("1. open")).replaceAll("\"", "");
-        String high = String.valueOf(seriesMap.getValue().get("2. high")).replaceAll("\"", "");
-        String low = String.valueOf(seriesMap.getValue().get("3. low")).replaceAll("\"", "");
-        String close = String.valueOf(seriesMap.getValue().get("4. close")).replaceAll("\"", "");
-        String volume = String.valueOf(seriesMap.getValue().get("5. volume")).replaceAll("\"", "");
+    IntraStock intraStock(String symbol, Map.Entry<String, JsonNode> seriesMap, LocalDateTime date){
+        double open = Double.valueOf(seriesMap.getValue().get("1. open").toString().replaceAll("\"", "").trim());
+        double high = Double.valueOf(seriesMap.getValue().get("2. high").toString().replaceAll("\"", "").trim());
+        double low = Double.valueOf(seriesMap.getValue().get("3. low").toString().replaceAll("\"", "").trim());
+        double close = Double.valueOf(seriesMap.getValue().get("4. close").toString().replaceAll("\"", "").trim());
+        BigDecimal volume = new BigDecimal(seriesMap.getValue().get("5. volume").toString().replaceAll("\"", "").trim());
         return Stock.intraDay(symbol, open, high, low, close, volume, date);
     }
 
 
-    Stock dailyStock(String symbol, Map.Entry<String, JsonNode> seriesMap, LocalDate date){
-        String open = String.valueOf(seriesMap.getValue().get("1. open")).replaceAll("\"", "");
-        String high = String.valueOf(seriesMap.getValue().get("2. high")).replaceAll("\"", "");
-        String low = String.valueOf(seriesMap.getValue().get("3. low")).replaceAll("\"", "");
-        String close = String.valueOf(seriesMap.getValue().get("4. close")).replaceAll("\"", "");
-        String volume = String.valueOf(seriesMap.getValue().get("5. volume")).replaceAll("\"", "");
+    DailyStock dailyStock(String symbol, Map.Entry<String, JsonNode> seriesMap, LocalDate date){
+        double open = Double.valueOf(seriesMap.getValue().get("1. open").toString().replaceAll("\"", "").trim());
+        double high = Double.valueOf(seriesMap.getValue().get("2. high").toString().replaceAll("\"", "").trim());
+        double low = Double.valueOf(seriesMap.getValue().get("3. low").toString().replaceAll("\"", "").trim());
+        double close = Double.valueOf(seriesMap.getValue().get("4. close").toString().replaceAll("\"", "").trim());
+        BigDecimal volume = new BigDecimal(seriesMap.getValue().get("5. volume").toString().replaceAll("\"", "").trim());
         return Stock.daily(symbol, open, high, low, close, volume, date);
     }
 

@@ -1,5 +1,7 @@
 package com.jalpha_vantage.impl;
 
+import com.jalpha_vantage.domain.DailyStock;
+import com.jalpha_vantage.domain.IntraStock;
 import com.jalpha_vantage.domain.Stock;
 import com.jalpha_vantage.exception.*;
 import com.jalpha_vantage.service.IStockService;
@@ -28,7 +30,7 @@ public class StockTemplateTest extends AbstractServiceTest {
         try {
             HashMap<String, String> params = new HashMap<String, String>();
             params.put("interval", "1min");
-            List<Stock> stocks = stockOperation.intraDay("BP.L", params);
+            List<IntraStock> stocks = stockOperation.intraDay("BP.L", params);
             //Closed on the Weekends, so it has no data (Test was ran on a weekend)
             assertEquals(100, stocks.size());
         } catch (UnsupportedEncodingException ex) {
@@ -59,7 +61,7 @@ public class StockTemplateTest extends AbstractServiceTest {
     public void testDaily() {
         try {
             HashMap<String, String> params = new HashMap<String, String>();
-            List<Stock> stocks = stockOperation.daily("BARC.L", params);
+            List<DailyStock> stocks = stockOperation.daily("BARC.L", params);
             assertEquals(100, stocks.size());
 
         } catch (UnsupportedEncodingException ex) {
@@ -90,7 +92,7 @@ public class StockTemplateTest extends AbstractServiceTest {
     public void testDailyAdjustedClose() {
         try {
             HashMap<String, String> params = new HashMap<String, String>();
-            List<Stock> stocks = stockOperation.dailyAdjustedClose("vod.l", params);
+            List<DailyStock> stocks = stockOperation.dailyAdjustedClose("vod.l", params);
             assertEquals(100, stocks.size());
         } catch (UnsupportedEncodingException ex) {
             ex.printStackTrace();
@@ -120,7 +122,7 @@ public class StockTemplateTest extends AbstractServiceTest {
     public void testWeekly() {
         try {
             HashMap<String, String> params = new HashMap<String, String>();
-            List<Stock> stocks = stockOperation.weekly("vod.l", params);
+            List<DailyStock> stocks = stockOperation.weekly("vod.l", params);
             assertEquals(925, stocks.size());
         } catch (UnsupportedEncodingException ex) {
             ex.printStackTrace();
@@ -150,7 +152,7 @@ public class StockTemplateTest extends AbstractServiceTest {
     public void testWeeklyAdjusted() {
         try {
             HashMap<String, String> params = new HashMap<String, String>();
-            List<Stock> stocks = stockOperation.weeklyAdjusted("vod.l", params);
+            List<DailyStock> stocks = stockOperation.weeklyAdjusted("vod.l", params);
             assertEquals(931, stocks.size());
         } catch (UnsupportedEncodingException ex) {
             ex.printStackTrace();
@@ -180,7 +182,7 @@ public class StockTemplateTest extends AbstractServiceTest {
     public void testMonthly() {
         try {
             HashMap<String, String> params = new HashMap<String, String>();
-            List<Stock> stocks = stockOperation.monthly("vod.l", params);
+            List<DailyStock> stocks = stockOperation.monthly("vod.l", params);
             assertEquals(212, stocks.size());
         } catch (UnsupportedEncodingException ex) {
             ex.printStackTrace();
@@ -210,7 +212,7 @@ public class StockTemplateTest extends AbstractServiceTest {
     public void testMonthlyAdjusted() {
         try {
             HashMap<String, String> params = new HashMap<String, String>();
-            List<Stock> stocks = stockOperation.monthlyAdjusted("vod.l", params);
+            List<DailyStock> stocks = stockOperation.monthlyAdjusted("vod.l", params);
             assertEquals(213, stocks.size());
         } catch (UnsupportedEncodingException ex) {
             ex.printStackTrace();

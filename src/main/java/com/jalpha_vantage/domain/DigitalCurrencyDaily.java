@@ -5,23 +5,24 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 @Getter
 @Setter
 @ToString(callSuper = true)
 public class DigitalCurrencyDaily extends DigitalCurrency {
-    String open;
-    String usdOpen;
-    String high;
-    String usdHigh;
-    String low;
-    String usdLow;
-    String close;
-    String usdClose;
+    double open;
+    double usdOpen;
+    double high;
+    double usdHigh;
+    double low;
+    double usdLow;
+    double close;
+    double usdClose;
     LocalDate date;
 
 
-    protected DigitalCurrencyDaily(CryptoSymbol symbol, String market, String open,String usdOpen, String high,String usdHigh, String low,String usdLow, String close,String usdClose, String volume, String marketCap, LocalDate date) {
+    protected DigitalCurrencyDaily(CryptoSymbol symbol, String market, double open, double usdOpen, double high, double usdHigh, double low, double usdLow, double close, double usdClose, BigDecimal volume, BigDecimal marketCap, LocalDate date) {
         this.symbol = symbol;
         this.market = market;
         this.open = open;

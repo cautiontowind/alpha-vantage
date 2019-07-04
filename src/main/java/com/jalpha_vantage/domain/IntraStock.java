@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Getter
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
 public class IntraStock extends Stock {
     private LocalDateTime date;
 
-    protected IntraStock(String symbol, String open, String high, String low, String close, String volume, LocalDateTime date) {
+    protected IntraStock(String symbol, double open, double high, double low, double close, BigDecimal volume, LocalDateTime date) {
         this.symbol = symbol;
         this.open = open;
         this.high = high;
@@ -22,7 +23,7 @@ public class IntraStock extends Stock {
         this.date = date;
     }
 
-    protected IntraStock(String name, String symbol, String open, String high, String low, String close, String volume, String adjustedClose, String dividendAmount, String splitCoefficient, LocalDateTime date) {
+    protected IntraStock(String name, String symbol, double open, double high, double low, double close, BigDecimal volume, double adjustedClose, double dividendAmount, double splitCoefficient, LocalDateTime date) {
         this.symbol = symbol;
         this.open = open;
         this.high = high;
