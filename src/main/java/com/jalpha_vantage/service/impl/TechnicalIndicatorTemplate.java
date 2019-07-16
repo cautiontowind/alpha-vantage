@@ -23,7 +23,7 @@ import static java.util.stream.Collectors.joining;
 
 public class TechnicalIndicatorTemplate implements ITechnicalIndicatorService {
 
-    private static String apiKey;
+    private final String apiKey;
     private final RestTemplate restTemplate;
 
 

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -14,15 +15,15 @@ import java.time.LocalDateTime;
 public class DigitalCurrency {
     protected CryptoSymbol symbol;
     protected String market;
-    protected String volume;
-    protected String marketCap;
+    protected BigDecimal volume;
+    protected BigDecimal marketCap;
 
 
-    public static DigitalCurrencyDaily daily(CryptoSymbol symbol, String market, String open, String usdOpen, String high, String usdHigh, String low, String usdLow, String close, String usdClose, String volume, String marketCap, LocalDate date) {
-        return new DigitalCurrencyDaily(symbol, market, open,usdOpen,high, usdHigh ,low,usdLow, close, usdClose, volume, marketCap, date);
+    public static DigitalCurrencyDaily daily(CryptoSymbol symbol, String market, double open, double usdOpen, double high, double usdHigh, double low, double usdLow, double close, double usdClose, BigDecimal volume, BigDecimal marketCap, LocalDate date) {
+        return new DigitalCurrencyDaily(symbol,market,open,usdOpen,high,usdHigh,low,usdLow,close,usdClose,volume,marketCap,date);
     }
 
-    public static DigitalCurrency intraDay(CryptoSymbol symbol, String market, String price, String usdPrice, String volume, String marketCap, LocalDateTime dateTime) {
+    public static DigitalCurrencyIntraDay intraDay(CryptoSymbol symbol, String market, double price, double usdPrice, BigDecimal volume, BigDecimal marketCap, LocalDateTime dateTime) {
         return new DigitalCurrencyIntraDay(symbol, market, price, usdPrice, volume, marketCap,dateTime);
     }
 }
