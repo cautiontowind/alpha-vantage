@@ -14,6 +14,8 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
@@ -76,7 +78,7 @@ public class StockTemplate implements IStockService {
                 while (timeSeriesIter.hasNext()) {
                     Map.Entry<String, JsonNode> timeSeriesMap = timeSeriesIter.next();
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                    LocalDateTime dateTime = LocalDateTime.parse(timeSeriesMap.getKey(), formatter);
+                    ZonedDateTime dateTime = LocalDateTime.parse(timeSeriesMap.getKey(), formatter).atZone(ZoneId.of("US/Eastern"));
                     IntraStock stock = intraStock(symbol, timeSeriesMap, dateTime);
                     result.add(stock);
                 }
@@ -366,7 +368,7 @@ public class StockTemplate implements IStockService {
         return result;
     }
 
-    IntraStock intraStock(String symbol, Map.Entry<String, JsonNode> seriesMap, LocalDateTime date){
+    IntraStock intraStock(String symbol, Map.Entry<String, JsonNode> seriesMap, ZonedDateTime date){
         double open = Double.valueOf(seriesMap.getValue().get("1. open").toString().replaceAll("\"", "").trim());
         double high = Double.valueOf(seriesMap.getValue().get("2. high").toString().replaceAll("\"", "").trim());
         double low = Double.valueOf(seriesMap.getValue().get("3. low").toString().replaceAll("\"", "").trim());

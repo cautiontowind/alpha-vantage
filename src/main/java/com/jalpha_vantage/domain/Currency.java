@@ -5,6 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 @Getter
 @Setter
@@ -15,11 +16,11 @@ public class Currency {
     String toCurrencyCode;
     String toCurrencyName;
     double exchangeRate;
-    LocalDateTime lastRefreshed;
+    ZonedDateTime lastRefreshed;
     String timeZone;
 
     private Currency(String fromCurrencyCode, String fromCurrencyName, String toCurrencyCode, String toCurrencyName, double exchangeRate,
-                     LocalDateTime lastRefreshed, String timeZone) {
+                     ZonedDateTime lastRefreshed, String timeZone) {
         this.fromCurrencyCode = fromCurrencyCode;
         this.fromCurrencyName = fromCurrencyName;
         this.toCurrencyCode = toCurrencyCode;
@@ -30,7 +31,7 @@ public class Currency {
     }
 
     public static Currency newCurrencyInstance(String fromCurrencyCode, String fromCurrencyName, String toCurrencyCode, String toCurrencyName, double exchangeRate,
-                                               LocalDateTime lastRefreshed, String timeZone) {
+                                               ZonedDateTime lastRefreshed, String timeZone) {
         return new Currency(fromCurrencyCode, fromCurrencyName, toCurrencyCode, toCurrencyName, exchangeRate,
                 lastRefreshed, timeZone);
     }

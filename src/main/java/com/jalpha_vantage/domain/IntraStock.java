@@ -5,15 +5,15 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 @Getter
 @Setter
 @ToString(callSuper = true)
 public class IntraStock extends Stock {
-    private LocalDateTime date;
+    private ZonedDateTime date;
 
-    protected IntraStock(String symbol, double open, double high, double low, double close, BigDecimal volume, LocalDateTime date) {
+    protected IntraStock(String symbol, double open, double high, double low, double close, BigDecimal volume, ZonedDateTime date) {
         this.symbol = symbol;
         this.open = open;
         this.high = high;
@@ -23,7 +23,7 @@ public class IntraStock extends Stock {
         this.date = date;
     }
 
-    protected IntraStock(String name, String symbol, double open, double high, double low, double close, BigDecimal volume, double adjustedClose, double dividendAmount, double splitCoefficient, LocalDateTime date) {
+    protected IntraStock(String name, String symbol, double open, double high, double low, double close, BigDecimal volume, double adjustedClose, double dividendAmount, double splitCoefficient, ZonedDateTime date) {
         this.symbol = symbol;
         this.open = open;
         this.high = high;

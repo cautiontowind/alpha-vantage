@@ -7,7 +7,7 @@ import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 @Getter
 @Setter
@@ -23,7 +23,7 @@ public class DigitalCurrency {
         return new DigitalCurrencyDaily(symbol,market,open,usdOpen,high,usdHigh,low,usdLow,close,usdClose,volume,marketCap,date);
     }
 
-    public static DigitalCurrencyIntraDay intraDay(CryptoSymbol symbol, String market, double price, double usdPrice, BigDecimal volume, BigDecimal marketCap, LocalDateTime dateTime) {
+    public static DigitalCurrencyIntraDay intraDay(CryptoSymbol symbol, String market, double price, double usdPrice, BigDecimal volume, BigDecimal marketCap, ZonedDateTime dateTime) {
         return new DigitalCurrencyIntraDay(symbol, market, price, usdPrice, volume, marketCap,dateTime);
     }
 }
