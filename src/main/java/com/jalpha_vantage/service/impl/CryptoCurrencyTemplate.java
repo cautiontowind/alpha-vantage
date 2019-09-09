@@ -17,6 +17,8 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
@@ -185,7 +187,7 @@ public class CryptoCurrencyTemplate implements ICryptoCurrencyService {
                     String toCurrencyName = String.valueOf(timeSeriesIter.next().getValue()).replaceAll("\"", "");
                     double exchangeRate = Double.valueOf(timeSeriesIter.next().getValue().toString().replaceAll("\"", ""));
                     String lastRefreshed = String.valueOf(timeSeriesIter.next().getValue()).replaceAll("\"", "");
-                    LocalDateTime dateTime = LocalDateTime.parse(lastRefreshed, formatter);
+                    ZonedDateTime dateTime = LocalDateTime.parse(lastRefreshed, formatter).atZone(ZoneId.of("UTC"));
 
                     String timezone = String.valueOf(timeSeriesIter.next().getValue()).replaceAll("\"", "");
                     return Currency.newCurrencyInstance(fromCurrencyCode, fromCurrencyName, toCurrencyCode, toCurrencyName, exchangeRate, dateTime, timezone);

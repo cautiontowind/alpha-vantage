@@ -7,6 +7,7 @@ import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 @Getter
 @Setter
@@ -14,9 +15,9 @@ import java.time.LocalDateTime;
 public class DigitalCurrencyIntraDay extends DigitalCurrency {
     double price;
     double usdPrice;
-    LocalDateTime dateTime;
+    ZonedDateTime dateTime;
 
-    protected DigitalCurrencyIntraDay(CryptoSymbol symbol, String market, double price, double usdPrice, BigDecimal volume, BigDecimal marketCap, LocalDateTime dateTime) {
+    protected DigitalCurrencyIntraDay(CryptoSymbol symbol, String market, double price, double usdPrice, BigDecimal volume, BigDecimal marketCap, ZonedDateTime dateTime) {
         this.symbol = symbol;
         this.market = market;
         this.price = price;
