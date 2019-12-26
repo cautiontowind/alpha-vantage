@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e9e25bde-e0c2-40d1-ac3f-1780c74d3502" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/jalpha_vantage/Tester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/jalpha_vantage/Tester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jalpha-vantage.iml" beforeDir="false" afterPath="$PROJECT_DIR$/jalpha-vantage.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/enums/CryptoSymbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jalpha_vantage/enums/CryptoSymbol.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,12 +16,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="1QbixunXP0MzZPb66csmfBjusN1" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
+    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RunDashboard">
@@ -65,6 +77,8 @@
       <option name="presentableId" value="Default" />
       <updated>1568045946632</updated>
       <workItem from="1568045967607" duration="3758000" />
+      <workItem from="1570102958460" duration="1026000" />
+      <workItem from="1577291437691" duration="5223000" />
     </task>
     <servers />
   </component>
@@ -76,7 +90,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
