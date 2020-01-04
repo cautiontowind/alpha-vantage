@@ -1,6 +1,7 @@
 package com.jalpha_vantage.domain;
 
 import com.jalpha_vantage.enums.CryptoSymbol;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -10,6 +11,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @ToString(callSuper = true)
+@EqualsAndHashCode
 public class DigitalCurrencyDaily extends DigitalCurrency {
     double open;
     double usdOpen;
@@ -22,7 +24,7 @@ public class DigitalCurrencyDaily extends DigitalCurrency {
     LocalDate date;
 
 
-    protected DigitalCurrencyDaily(CryptoSymbol symbol, String market, double open, double usdOpen, double high, double usdHigh, double low, double usdLow, double close, double usdClose, BigDecimal volume, BigDecimal marketCap, LocalDate date) {
+    protected DigitalCurrencyDaily(CryptoSymbol symbol, String market, double open, double usdOpen, double high, double usdHigh, double low, double usdLow, double close, double usdClose, double volume, double marketCap, LocalDate date) {
         this.symbol = symbol;
         this.market = market;
         this.open = open;

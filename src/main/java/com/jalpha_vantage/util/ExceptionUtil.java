@@ -15,6 +15,7 @@ public class ExceptionUtil {
     public static void handleExceptions(String value, String function) throws MissingApiKeyException, InvalidApiKeyException, MalFormattedFunctionException, InvalidFunctionOptionException, UltraHighFrequencyRequestException, ApiLimitExceeded {
         String invalidFunction = "\"This API function (" + function + ") does not exist.\"";
         String missingOrInvalidFunctionParam = "\"Invalid API call, please visit documentation (https://www.alphavantage.co/documentation/) for function: " + function + "\"";
+
         if (value.equals(MISSING_API_KEY)) {
             throw new MissingApiKeyException(MISSING_API_KEY);
         } else if (value.equals(INVALID_API_KEY)) {
@@ -25,7 +26,7 @@ public class ExceptionUtil {
             throw new InvalidFunctionOptionException(function);
         } else if (value.equals(HIGH_USUAGE)) {
             throw new UltraHighFrequencyRequestException(HIGH_USUAGE);
-        }else if(value.equals(API_LIMIT)){
+        }else if(value.equals(API_LIMIT)) {
             throw new ApiLimitExceeded(API_LIMIT);
         }
 

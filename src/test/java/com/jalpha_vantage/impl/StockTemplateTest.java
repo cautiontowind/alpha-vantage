@@ -2,7 +2,7 @@ package com.jalpha_vantage.impl;
 
 import com.jalpha_vantage.domain.DailyStock;
 import com.jalpha_vantage.domain.IntraStock;
-import com.jalpha_vantage.domain.Stock;
+import com.jalpha_vantage.domain.StockQuote;
 import com.jalpha_vantage.exception.*;
 import com.jalpha_vantage.service.IStockService;
 import com.jalpha_vantage.test.AbstractServiceTest;
@@ -10,21 +10,26 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.UnsupportedEncodingException;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.fail;
+import static junit.framework.TestCase.*;
 
 public class StockTemplateTest extends AbstractServiceTest {
 
     @Autowired
     IStockService stockOperation;
 
-
+    @Test
+    public void testQuote(){
+        try{
+        StockQuote quote = stockOperation.quote("BARC.L");
+        assertNotNull(quote);
+//        assertNotNull(quote);
+        }catch (Exception ex){
+            fail(ex.getMessage());
+        }
+    }
     @Test
     public void testIntraDay() {
         try {

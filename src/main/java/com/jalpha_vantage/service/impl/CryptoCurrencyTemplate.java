@@ -141,10 +141,10 @@ public class CryptoCurrencyTemplate implements ICryptoCurrencyService {
                     double close = Double.valueOf(timeSeriesMap.getValue().get(closeVal).toString().replaceAll("\"", "").trim());
                     double usdClose = Double.valueOf(timeSeriesMap.getValue().get("4b. close (USD)").toString().replaceAll("\"", "").trim());
                     System.out.println(timeSeriesMap.getValue().get("5. volume").toString().replaceAll("\"", ""));
-                    BigDecimal vol = new BigDecimal(timeSeriesMap.getValue().get("5. volume").toString().replaceAll("\"", "").trim());
+                    double volume = Double.valueOf(timeSeriesMap.getValue().get("5. volume").toString().replaceAll("\"", "").trim());
 
-                    BigDecimal marketCap = new BigDecimal(timeSeriesMap.getValue().get("6. market cap (USD)").toString().replaceAll("\"", "").trim());
-                    result.add(DigitalCurrency.daily(symbol, market.name(), open, usdOpen, high,usdHigh, low,usdLow, close, usdClose, vol, marketCap, localDate));
+                    double marketCap = Double.valueOf(timeSeriesMap.getValue().get("6. market cap (USD)").toString().replaceAll("\"", "").trim());
+                    result.add(DigitalCurrency.daily(symbol, market.name(), open, usdOpen, high,usdHigh, low,usdLow, close, usdClose, volume, marketCap, localDate));
                 }
 
             }

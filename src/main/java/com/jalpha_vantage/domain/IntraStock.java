@@ -1,5 +1,6 @@
 package com.jalpha_vantage.domain;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -9,11 +10,12 @@ import java.time.ZonedDateTime;
 
 @Getter
 @Setter
+@EqualsAndHashCode
 @ToString(callSuper = true)
 public class IntraStock extends Stock {
     private ZonedDateTime date;
 
-    protected IntraStock(String symbol, double open, double high, double low, double close, BigDecimal volume, ZonedDateTime date) {
+    protected IntraStock(String symbol, double open, double high, double low, double close, double volume, ZonedDateTime date) {
         this.symbol = symbol;
         this.open = open;
         this.high = high;
@@ -23,7 +25,7 @@ public class IntraStock extends Stock {
         this.date = date;
     }
 
-    protected IntraStock(String name, String symbol, double open, double high, double low, double close, BigDecimal volume, double adjustedClose, double dividendAmount, double splitCoefficient, ZonedDateTime date) {
+    protected IntraStock(String name, String symbol, double open, double high, double low, double close, double volume, double adjustedClose, double dividendAmount, double splitCoefficient, ZonedDateTime date) {
         this.symbol = symbol;
         this.open = open;
         this.high = high;

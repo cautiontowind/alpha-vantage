@@ -1,5 +1,6 @@
 package com.jalpha_vantage.domain;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -8,6 +9,7 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
+@EqualsAndHashCode
 @ToString
 public class StochfIndicator {
     private String symbol;
