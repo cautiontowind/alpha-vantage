@@ -457,6 +457,7 @@ public enum CryptoSymbol {
     LEV,
     LOCI,
     LOOM,
+    MATIC,
     MED,
     MER,
     MITH,
